@@ -33,12 +33,11 @@ Vagrant.configure("2") do |config|
     override.vm.box_url = "http://%s.release.core-os.net/amd64-usr/current/coreos_production_vagrant_vmware_fusion.json" % $update_channel
   end
 
-  config.vm.provider :virtualbox do |v|
-    # On VirtualBox, we don't have guest additions or a functional vboxsf
-    # in CoreOS, so tell Vagrant that so it can be smarter.
-    v.check_guest_additions = false
-    v.functional_vboxsf     = false
-  end
+#  config.vm.provider :virtualbox do |v|
+#    # On VirtualBox, we don't have guest additions or a functional vboxsf
+#    # in CoreOS, so tell Vagrant that so it can be smarter.
+#    v.check_guest_additions = false
+#  end
 
   # plugin conflict
   if Vagrant.has_plugin?("vagrant-vbguest") then
@@ -87,7 +86,7 @@ Vagrant.configure("2") do |config|
       config.vm.network :private_network, ip: ip
 
       # Uncomment below to enable NFS for sharing the host machine into the coreos-vagrant VM.
-      #config.vm.synced_folder ".", "/home/core/share", id: "core", :nfs => true, :mount_options => ['nolock,vers=3,udp']
+      #config.vm.synced_folder ".", "/Users/yazz/ATG/coreos/vagrant-share", id: "core", :nfs => true, :mount_options => ['nolock,vers=3,udp']
 
       if File.exist?(CLOUD_CONFIG_PATH)
         config.vm.provision :file, :source => "#{CLOUD_CONFIG_PATH}", :destination => "/tmp/vagrantfile-user-data"
