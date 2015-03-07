@@ -1,6 +1,12 @@
 #cloud-config
 
 ---
+# You need to find --discovery line and replace it.
+#
+#   --discovery https://discovery.etcd.io/<replace-me-token>  
+#
+#  Generate a new one from https://discovery.etcd.io/new?size=3
+#
 write_files:
 - path: /opt/bin/waiter.sh
   owner: root
@@ -37,14 +43,14 @@ coreos:
         User=etcd
         PermissionsStartOnly=true
         ExecStart=/usr/bin/etcd \
-        --name ${COREOS_PUBLIC_IPV4} \
-        --addr ${COREOS_PUBLIC_IPV4}:4001 \
+        --name ${ETH1_IPV4} \
+        --addr ${ETH1_IPV4}:4001 \
         --bind-addr 0.0.0.0 \
         --cluster-active-size 1 \
         --data-dir /var/lib/etcd \
         --http-read-timeout 86400 \
-        --peer-addr ${COREOS_PUBLIC_IPV4}:7001 \
-        --discovery https://discovery.etcd.io/278461a8f5dff66a22b706462d1bb2ca \
+        --peer-addr ${ETH1_IPV4}:7001 \
+        --discovery https://discovery.etcd.io/<replace-me-token> \
         --snapshot true
         Restart=always
         RestartSec=10s
@@ -118,7 +124,7 @@ coreos:
         --port=8080 \
         --portal_net=10.100.0.0/16 \
         --etcd_servers=http://127.0.0.1:4001 \
-        --public_address_override=$private_ipv4 \
+        --public_address_override=${ETH1_IPV4} \
         --logtostderr=true
         Restart=always
         RestartSec=10
