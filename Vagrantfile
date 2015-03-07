@@ -5,7 +5,7 @@ require 'fileutils'
 
 Vagrant.require_version ">= 1.6.0"
 
-NODE_CONFIG_PATH = File.join(File.dirname(__FILE__), "user-data.node")
+NODE_CONFIG_PATH = File.join(File.dirname(__FILE__), "user-data.nodes")
 MASTER_CONFIG_PATH = File.join(File.dirname(__FILE__), "user-data.master")
 CONFIG = File.join(File.dirname(__FILE__), "config.rb")
 

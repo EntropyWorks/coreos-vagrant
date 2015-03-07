@@ -4,3 +4,4 @@ user-data
 config.rb
 user-data.master
 user-data.nodes
+user-data.node
