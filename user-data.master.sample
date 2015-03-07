@@ -33,17 +33,18 @@ coreos:
         After=setup-network-environment.service
         [Service]
         EnvironmentFile=/etc/network-environment
+        EnvironmentFile=/etc/environment
         User=etcd
         PermissionsStartOnly=true
         ExecStart=/usr/bin/etcd \
-        --name ${DEFAULT_IPV4} \
-        --addr ${DEFAULT_IPV4}:4001 \
+        --name ${COREOS_PUBLIC_IPV4} \
+        --addr ${COREOS_PUBLIC_IPV4}:4001 \
         --bind-addr 0.0.0.0 \
         --cluster-active-size 1 \
         --data-dir /var/lib/etcd \
         --http-read-timeout 86400 \
-        --peer-addr ${DEFAULT_IPV4}:7001 \
-        --discovery https://discovery.etcd.io/<replace-me-token> \
+        --peer-addr ${COREOS_PUBLIC_IPV4}:7001 \
+        --discovery https://discovery.etcd.io/278461a8f5dff66a22b706462d1bb2ca \
         --snapshot true
         Restart=always
         RestartSec=10s
