@@ -11,9 +11,13 @@ coreos:
         Description=fleet daemon
         Wants=fleet.socket
         After=fleet.socket
+        Requires=setup-network-environment.service
+        After=setup-network-environment.service
         [Service]
+        EnvironmentFile=/etc/network-environment
         Environment="FLEET_ETCD_SERVERS=http://172.17.8.11:4001"
         Environment="FLEET_METADATA=role=node"
+        Environment="FLEET_PUBLIC_IP=${ETH1_IPV4}"
         ExecStart=/usr/bin/fleetd
         Restart=always
         RestartSec=10s
@@ -90,7 +94,7 @@ coreos:
         ExecStart=/opt/bin/kubelet \
         --address=0.0.0.0 \
         --port=10250 \
-        --hostname_override=$private_ipv4 \
+        --hostname_override=${ETH1_IPV4} \
         --api_servers=172.17.8.11:8080 \
         --logtostderr=true
         Restart=always
