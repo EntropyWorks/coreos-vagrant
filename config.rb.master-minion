@@ -4,9 +4,8 @@
 # uncomment the necessary lines, leaving the $, and replace everything
 # after the equals sign..
 
-# Size of the CoreOS Master cluster created by Vagrant
+# Size of the CoreOS cluster created by Vagrant
 $master_instances=3
-# CoreOS Hosts that will register with the Master etcd and fleet
 $num_instances=3
 
 # Official CoreOS channel from which updates should be downloaded
@@ -49,8 +48,4 @@ if File.exists?('user-data.master') && ARGV[0].eql?('up')
         File.open(file_name + '.yaml', "w") {|file| file.puts new_contents }
     end
   end
-else
-  puts "Missing user-data.master file"
-  exit 1
 end
-
