@@ -5,8 +5,8 @@ require 'fileutils'
 
 Vagrant.require_version ">= 1.6.0"
 
-NODE_CONFIG_PATH = File.join(File.dirname(__FILE__), "user-data.node")
-MASTER_CONFIG_PATH = File.join(File.dirname(__FILE__), "user-data.master")
+NODE_CONFIG_PATH = File.join(File.dirname(__FILE__), "user-data.node.yaml")
+MASTER_CONFIG_PATH = File.join(File.dirname(__FILE__), "user-data.master.yaml")
 CONFIG = File.join(File.dirname(__FILE__), "config.rb")
 
 # Defaults for config options defined in CONFIG
@@ -105,6 +105,9 @@ Vagrant.configure("2") do |config|
       if $expose_docker_tcp
         config.vm.network "forwarded_port", guest: 2375, host: ($expose_docker_tcp + i - 1), auto_correct: true
       end
+      if $expose_etcd_tcp
+        config.vm.network "forwarded_port", guest: 4001, host: ($expose_etcd_tcp + i - 1), auto_correct: true
+      end
 
       ["vmware_fusion", "vmware_workstation"].each do |vmware|
         config.vm.provider vmware do |v|
@@ -168,6 +171,9 @@ Vagrant.configure("2") do |config|
 
       if $expose_docker_tcp
         config.vm.network "forwarded_port", guest: 2375, host: ($expose_docker_tcp + i - 1), auto_correct: true
+      end
+      if $expose_etcd_tcp
+        config.vm.network "forwarded_port", guest: 4001, host: ($expose_etcd_tcp + i - 1), auto_correct: true
       end
 
       $forwarded_ports.each do |guest, host|
