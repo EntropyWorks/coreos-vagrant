@@ -2,6 +2,5 @@
 log/
 user-data
 config.rb
-user-data.nodes
-user-data.node
 user-data.master.yaml
+user-data.node.yaml
