@@ -37,12 +37,13 @@ coreos:
         User=etcd
         PermissionsStartOnly=true
         ExecStart=/usr/bin/etcd \
-        --name ${ETH1_IPV4} \
-        --addr ${ETH1_IPV4}:4001 \
+        --name ${COREOS_PRIVATE_IPV4} \
+        --addr ${COREOS_PRIVATE_IPV4}:4001 \
         --bind-addr 0.0.0.0 \
+        --cluster-active-size 1 \
         --data-dir /var/lib/etcd \
         --http-read-timeout 86400 \
-        --peer-addr ${ETH1_IPV4}:7001 \
+        --peer-addr ${COREOS_PRIVATE_IPV4}:7001 \
         --discovery AUTO_REPLACED_WITH_DISCOVERY_URL \
         --snapshot true
         Restart=always
@@ -67,7 +68,7 @@ coreos:
         EnvironmentFile=/etc/network-environment
         EnvironmentFile=/etc/environment
         Environment="FLEET_ETCD_SERVERS=http://127.0.0.1:4001"
-        Environment="FLEET_METADATA=role=master,host=$(hostname),default_ipv4=$DEFAULT_IPV4,eth0_ipv4=$ETH0_IPV4,eth1_ipv4=$ETH1_IPV4"
+        Environment="FLEET_METADATA=role=master"
         ExecStart=/usr/bin/fleetd
         Restart=always
         RestartSec=10s
@@ -124,7 +125,7 @@ coreos:
         --port=8080 \
         --portal_net=10.100.0.0/16 \
         --etcd_servers=http://127.0.0.1:4001 \
-        --public_address_override=${ETH1_IPV4} \
+        --public_address_override=${COREOS_PRIVATE_IPV4} \
         --logtostderr=true
         Restart=always
         RestartSec=10
