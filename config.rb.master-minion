@@ -5,7 +5,7 @@
 # after the equals sign..
 
 # Size of the CoreOS cluster created by Vagrant
-$master_instances=3
+$master_instances=1
 $num_instances=3
 
 # Official CoreOS channel from which updates should be downloaded
@@ -22,6 +22,7 @@ $update_channel='alpha'
 # If 2375 is used, Vagrant will auto-increment (e.g. in the case of $num_instances > 1)
 # You can then use the docker tool locally by setting the following env var:
 #   export DOCKER_HOST='tcp://127.0.0.1:2375'
+$master_private_ip='172.17.8.11'
 $expose_docker_tcp=2375
 $expose_etcd_tcp=4001
 
@@ -43,6 +44,23 @@ if File.exists?('user-data.master') && ARGV[0].eql?('up')
 
         # To merely print the contents of the file, use:
         puts token
+
+        # To write changes to the file, use:
+        File.open(file_name + '.yaml', "w") {|file| file.puts new_contents }
+    end
+  end
+end
+
+if File.exists?('user-data.node') && ARGV[0].eql?('up') 
+  if File.exists?('user-data.node.yaml')
+    puts "Already have user-data.node.yaml" 
+  else
+    file_names = ['user-data.node']
+    file_names.each do |file_name|
+        text = File.read(file_name)
+        new_contents = text.gsub(/<master-private-ip>/, $master_private_ip )
+
+        # To merely print the contents of the file, use:
 
         # To write changes to the file, use:
         File.open(file_name + '.yaml', "w") {|file| file.puts new_contents }
