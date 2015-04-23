@@ -88,8 +88,13 @@ See `config.rb.sample` for more information.
 
 ## Cluster Setup
 
-Launching a CoreOS cluster on Vagrant is as simple as configuring `$num_instances` in a `config.rb` file to 3 (or more!) and running `vagrant up`.
-Make sure you provide a fresh discovery URL in your `user-data` if you wish to bootstrap etcd in your cluster.
+When you launch CoreOS by running `vagrant up` you will by default bring up a master-01 and core-01. On master-01 all a stand alone
+etcd service will be started. This was done to make my testing easier. You may not actually need a full etcd cluster just for testing.
+
+To adjust the number of instances just copy the `config.rb.sample` file to `config.rb` and modify the `$master_instances` and $num_instances`
+
+When you run `vagrant up` a new discovery url will be created and placed into the new files `user-data.master.yaml` and `user-data.node.yaml`.
+Those files need to be removed if you plan to recreate the masters. 
 
 ## New Box Versions
 
