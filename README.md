@@ -88,13 +88,32 @@ See `config.rb.sample` for more information.
 
 ## Cluster Setup
 
-When you launch CoreOS by running `vagrant up` you will by default bring up a master-01 and core-01. On master-01 all a stand alone
-etcd service will be started. This was done to make my testing easier. You may not actually need a full etcd cluster just for testing.
+When you launch CoreOS by running `vagrant up` you will by default bring up `master-01` and `core-01`.
 
-To adjust the number of instances just copy the `config.rb.sample` file to `config.rb` and modify the `$master_instances` and $num_instances`
+On `master-01` is a stand alone etcd service. This was done to make my testing easier. You can create an etcd cluster by increasing the `$master_instances` 
+within your own `config.rb`. You only need one for most development environments. 
+
+To adjust the number of CoreOS minion instances`$num_instances`. You can always increase this number and re-run `vagrant up` to add more minion's to your setup.
 
 When you run `vagrant up` a new discovery url will be created and placed into the new files `user-data.master.yaml` and `user-data.node.yaml`.
 Those files need to be removed if you plan to recreate the masters. 
+
+## Redeploy
+
+To start over fresh and redeploy just do the following.
+
+```
+vagrant destroy -f 
+rm *.yaml
+vagrant up
+```
+
+If you only want to destroy your minion's I would just do the following
+
+```
+vagrant destroy -f core-0{1..3}
+vagrant up
+```
 
 ## New Box Versions
 
