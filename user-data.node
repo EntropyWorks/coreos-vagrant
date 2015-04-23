@@ -1,0 +1,143 @@
+#cloud-config
+
+---
+write-files:
+  - path: /etc/conf.d/nfs
+    permissions: '0644'
+    content: |
+      OPTS_RPC_MOUNTD=""
+  - path: /opt/bin/etcd-waiter.sh
+    owner: root
+    content: |
+      #! /usr/bin/bash
+      until curl http://__MASTER_PRIVATE_IP__:4001/v2/machines; do sleep 2; done
+  - path: /opt/bin/docker-cache-waiter.sh
+    owner: root
+    content: |
+      #! /usr/bin/bash
+      until curl http://__MASTER_PRIVATE_IP__:5000; do sleep 2; done
+coreos:
+  fleet:
+    public-ip: $public_ipv4
+    metadata: role=minion,public_ip=$public_ipv4
+  flannel:
+    interface: eth1
+  units:
+    - name: etcd.service
+      command: start
+      content: |
+        [Unit]
+        Description=etcd
+        Requires=setup-network-environment.service
+        After=setup-network-environment.service
+
+        [Service]
+        EnvironmentFile=/etc/network-environment
+        User=etcd
+        PermissionsStartOnly=true
+        ExecStart=/usr/bin/etcd \
+          --name $public_ipv4 \
+          --addr $public_ipv4:4001 \
+          --bind-addr 0.0.0.0 \
+          --cluster-active-size 1 \
+          --data-dir /var/lib/etcd \
+          --http-read-timeout 86400 \
+          --peer-addr $public_ipv4:7001 \
+          --discovery __DISCOVERY_URL__ 
+        Restart=always
+        RestartSec=10s
+    - name: etcd-waiter.service
+      command: start
+      content: |
+        [Unit]
+        Description=etcd waiter
+        Wants=network-online.target
+        After=network-online.target
+
+        [Service]
+        ExecStartPre=/usr/bin/chmod +x /opt/bin/etcd-waiter.sh
+        ExecStart=/usr/bin/bash /opt/bin/etcd-waiter.sh
+        RemainAfterExit=true
+        Type=oneshot
+    - name: fleet.service
+      command: start
+      content: |
+        [Unit]
+        Description=fleet daemon
+        Wants=fleet.socket
+        After=fleet.socket
+        Wants=etcd-waiter.service
+        After=etcd-waiter.service
+
+        [Service]
+        ExecStart=/usr/bin/fleetd
+        Restart=always
+        RestartSec=10s
+    - name: setup-network-environment.service
+      command: start
+      content: |
+        [Unit]
+        Description=Setup Network Environment
+        Documentation=https://github.com/kelseyhightower/setup-network-environment
+        Requires=network-online.target
+        After=network-online.target
+
+        [Service]
+        ExecStartPre=-/usr/bin/mkdir -p /opt/bin
+        ExecStartPre=/usr/bin/wget -N -P /opt/bin https://storage.googleapis.com/k8s/setup-network-environment
+        ExecStartPre=/usr/bin/chmod +x /opt/bin/setup-network-environment
+        ExecStart=/opt/bin/setup-network-environment
+        RemainAfterExit=yes
+        Type=oneshot
+    - name: flannel.service
+      command: start
+      content: |
+        [Unit]
+        Requires=setup-network-environment.service
+        After=setup-network-environment.service
+        Wants=etcd-waiter.service
+        After=etcd-waiter.service
+
+        [Service]
+        Type=notify
+        ExecStartPre=/usr/bin/mkdir -p /opt/bin
+        ExecStartPre=/usr/bin/wget -N -P /opt/bin https://storage.googleapis.com/k8s/flanneld
+        ExecStartPre=/usr/bin/chmod +x /opt/bin/flanneld
+        ExecStart=/opt/bin/flanneld --iface=eth1
+        #ExecStart=/opt/bin/flanneld --iface=eth1 --etcd-endpoints http://__MASTER_PRIVATE_IP__:4001
+    - name: docker-cache-waiter.service
+      command: start
+      content: |
+        [Unit]
+        Description=docker cache waiter
+        Wants=network-online.target
+        After=network-online.target
+
+        [Service]
+        ExecStartPre=/usr/bin/chmod +x /opt/bin/docker-cache-waiter.sh
+        ExecStart=/usr/bin/bash /opt/bin/docker-cache-waiter.sh
+        RemainAfterExit=true
+        Type=oneshot
+    - name: docker.service
+      command: start
+      content: |
+        [Unit]
+        After=flannel.service
+        Wants=flannel.service
+        After=docker-cache-waiter.service
+        Description=Docker Application Container Engine
+        Documentation=http://docs.docker.io
+
+        [Service]
+        EnvironmentFile=/run/flannel/subnet.env
+        ExecStartPre=/bin/mount --make-rprivate /
+        ExecStart=/usr/bin/docker --registry-mirror=http://__MASTER_PRIVATE_IP__:5000 -d --bip=${FLANNEL_SUBNET} --mtu=${FLANNEL_MTU} -s=overlay -H fd://
+
+        [Install]
+        WantedBy=multi-user.target
+    - name: rpc-statd.service
+      command: start
+      enable: true
+  update:
+    group: alpha
+    reboot-strategy: off

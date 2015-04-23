@@ -1,30 +1,12 @@
 # Size of the CoreOS cluster created by Vagrant
-$num_instances=1
+$num_instances=3
+
+# Set the size of your master where etcd will be run and other
+# items when deploying with kubernetes
+$master_instances=1
 
 # Used to fetch a new discovery token for a cluster of size $num_instances
-$new_discovery_url="https://discovery.etcd.io/new?size=#{$num_instances}"
-
-# To automatically replace the discovery token on 'vagrant up', uncomment
-# the lines below:
-#
-#if File.exists?('user-data') && ARGV[0].eql?('up')
-#  require 'open-uri'
-#  require 'yaml'
-#
-#  token = open($new_discovery_url).read
-#
-#  data = YAML.load(IO.readlines('user-data')[1..-1].join)
-#  if data['coreos'].key? 'etcd'
-#    data['coreos']['etcd']['discovery'] = token
-#  end
-#  if data['coreos'].key? 'etcd2'
-#    data['coreos']['etcd2']['discovery'] = token
-#  end
-#
-#  yaml = YAML.dump(data)
-#  File.open('user-data', 'w') { |file| file.write("#cloud-config\n\n#{yaml}") }
-#end
-#
+#$new_discovery_url="https://discovery.etcd.io/new?size=#{$master_instances}"
 
 #
 # coreos-vagrant is configured through a series of configuration
@@ -37,6 +19,15 @@ $new_discovery_url="https://discovery.etcd.io/new?size=#{$num_instances}"
 # The default value is "core", which results in VMs named starting with
 # "core-01" through to "core-${num_instances}".
 #$instance_name_prefix="core"
+
+# IP addresses
+#$ipv4_ip_base="172.17.8"
+
+# Set your master IP address
+#$master_ip_address = $ipv4_ip_base + '.' + '11'
+
+# Set up the Kubernetes Version you want to use
+#$kubernetes_version = '0.13.2'
 
 # Official CoreOS channel from which updates should be downloaded
 #$update_channel='alpha'
@@ -53,6 +44,9 @@ $new_discovery_url="https://discovery.etcd.io/new?size=#{$num_instances}"
 # You can then use the docker tool locally by setting the following env var:
 #   export DOCKER_HOST='tcp://127.0.0.1:2375'
 #$expose_docker_tcp=2375
+
+# Enable port forwarding of etcd TCP socket
+#$expose_etcd_tcp=4001
 
 # Enable NFS sharing of your home directory ($HOME) to CoreOS
 # It will be mounted at the same path in the VM as on the host.

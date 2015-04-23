@@ -1,0 +1,162 @@
+#cloud-config
+
+---
+write-files:
+  - path: /etc/conf.d/nfs
+    permissions: '0644'
+    content: |
+      OPTS_RPC_MOUNTD=""
+  - path: /opt/bin/waiter.sh
+    owner: root
+    content: |
+      #! /usr/bin/bash
+      until curl http://127.0.0.1:4001/v2/machines; do sleep 2; done
+
+coreos:
+  fleet:
+    public-ip: $public_ipv4
+    etcd_servers: http://__MASTER_PRIVATE_IP__:4001
+    metadata: role=master,public_ip=$public_ipv4
+  flannel:
+    interface: eth1
+  units:
+    - name: setup-network-environment.service
+      command: start
+      content: |
+        [Unit]
+        Description=Setup Network Environment
+        Documentation=https://github.com/kelseyhightower/setup-network-environment
+        Requires=network-online.target
+        After=network-online.target
+
+        [Service]
+        ExecStartPre=/usr/bin/mkdir -p /opt/bin
+        ExecStartPre=/usr/bin/wget -N -P /opt/bin https://storage.googleapis.com/k8s/setup-network-environment
+        ExecStartPre=/usr/bin/chmod +x /opt/bin/setup-network-environment
+        ExecStart=/opt/bin/setup-network-environment
+        RemainAfterExit=yes
+        Type=oneshot
+    - name: etcd.service
+      command: start
+      content: |
+        [Unit]
+        Description=etcd
+        Requires=setup-network-environment.service
+        After=setup-network-environment.service
+
+        [Service]
+        EnvironmentFile=/etc/network-environment
+        User=etcd
+        PermissionsStartOnly=true
+        ExecStart=/usr/bin/etcd \
+          --name $public_ipv4 \
+          --addr $public_ipv4:4001 \
+          --bind-addr 0.0.0.0 \
+          --cluster-active-size 1 \
+          --data-dir /var/lib/etcd \
+          --http-read-timeout 86400 \
+          --peer-addr $public_ipv4:7001 \
+          --discovery __DISCOVERY_URL__ \
+          --snapshot true
+        Restart=always
+        RestartSec=10s
+    - name: fleet.socket
+      command: start
+      content: |
+        [Socket]
+        ListenStream=/var/run/fleet.sock
+    - name: fleet.service
+      command: start
+      content: |
+        [Unit]
+        Description=fleet daemon
+        Wants=etcd.service
+        After=etcd.service
+        Wants=fleet.socket
+        After=fleet.socket
+
+        [Service]
+        ExecStart=/usr/bin/fleetd
+        Restart=always
+        RestartSec=10s
+    - name: etcd-waiter.service
+      command: start
+      content: |
+        [Unit]
+        Description=etcd waiter
+        Wants=network-online.target
+        Wants=etcd.service
+        After=etcd.service
+        After=network-online.target
+        Before=flannel.service
+
+        [Service]
+        ExecStartPre=/usr/bin/chmod +x /opt/bin/waiter.sh
+        ExecStart=/usr/bin/bash /opt/bin/waiter.sh
+        RemainAfterExit=true
+        Type=oneshot
+    - name: flannel.service
+      command: start
+      content: |
+        [Unit]
+        Wants=etcd-waiter.service
+        After=etcd-waiter.service
+        Requires=etcd.service
+        After=etcd.service
+        After=network-online.target
+        Wants=network-online.target
+        Description=flannel is an etcd backed overlay network for containers
+
+        [Service]
+        Type=notify
+        ExecStartPre=-/usr/bin/mkdir -p /opt/bin
+        ExecStartPre=/usr/bin/wget -N -P /opt/bin https://storage.googleapis.com/k8s/flanneld
+        ExecStartPre=/usr/bin/chmod +x /opt/bin/flanneld
+        ExecStartPre=-/usr/bin/etcdctl mk /coreos.com/network/config '{"Network":"10.244.0.0/16", "Backend": {"Type": "vxlan"}}'
+        ExecStart=/opt/bin/flanneld --iface=eth1
+    - name: docker.service
+      command: start
+      content: |
+        [Unit]
+        After=flannel.service
+        Wants=flannel.service
+        Description=Docker Application Container Engine
+        Documentation=http://docs.docker.io
+
+        [Service]
+        EnvironmentFile=/run/flannel/subnet.env
+        ExecStartPre=/bin/mount --make-rprivate /
+        ExecStart=/usr/bin/docker -d --bip=${FLANNEL_SUBNET} --mtu=${FLANNEL_MTU} -s=overlay -H fd://
+
+        [Install]
+        WantedBy=multi-user.target
+    - name: docker-cache.service
+      command: start
+      content: |
+        [Unit]
+        Description=Docker cache proxy
+        Wants=network-online.target
+        Wants=docker.service
+        After=docker.service
+        After=docker-online.target
+
+        [Service]
+        ExecStartPre=-/usr/bin/docker kill docker-registry
+        ExecStartPre=-/usr/bin/docker rm docker-registry
+        # GUNICORN_OPTS is an workaround for
+        # https://github.com/docker/docker-registry/issues/892
+        ExecStart=/usr/bin/docker run -d --restart always --net host --name docker-registry \
+          -e STANDALONE=false \
+          -e GUNICORN_OPTS=[--preload] \
+          -e MIRROR_SOURCE=https://registry-1.docker.io \
+          -e MIRROR_SOURCE_INDEX=https://index.docker.io \
+          -e MIRROR_TAGS_CACHE_TTL=1800 \
+          quay.io/devops/docker-registry:latest
+        RemainAfterExit=true
+        Type=oneshot
+    - name: rpc-statd.service
+      command: start
+      enable: true
+  update:
+    group: alpha
+    reboot-strategy: off
