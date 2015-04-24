@@ -19,9 +19,7 @@ write-files:
 coreos:
   fleet:
     public-ip: $public_ipv4
-    metadata: role=minion,public_ip=$public_ipv4
-  flannel:
-    interface: eth1
+    metadata: role=minion,public_ip=$public_ipv4,private_ip=$private_ipv4
   units:
     - name: etcd.service
       command: start
@@ -83,10 +81,12 @@ coreos:
         After=network-online.target
 
         [Service]
+        ExecStartPre=/bin/sh -c "echo FLANNEL_IFACE=$(ip route show | grep -v $(ip route show | grep default | awk '{ print $5 }') | awk '{ print $3 }') > /etc/flannel-iface"
         ExecStartPre=-/usr/bin/mkdir -p /opt/bin
-        ExecStartPre=/usr/bin/wget -N -P /opt/bin https://storage.googleapis.com/k8s/setup-network-environment
+        ExecStartPre=/bin/sh -c "while true; do /usr/bin/ping -c 1 storage.googleapis.com && break ; done ; /usr/bin/wget -N -P /opt/bin https://storage.googleapis.com/k8s/setup-network-environment"
         ExecStartPre=/usr/bin/chmod +x /opt/bin/setup-network-environment
         ExecStart=/opt/bin/setup-network-environment
+        ExecStartPost=/bin/sh -c "echo FLANNEL_IFACE=$(ip route show | grep -v $(ip route show | grep default | awk '{ print $5 }') | awk '{ print $3 }') >> /etc/network-environment"
         RemainAfterExit=yes
         Type=oneshot
     - name: flannel.service
@@ -100,11 +100,12 @@ coreos:
 
         [Service]
         Type=notify
+        EnvironmentFile=/etc/flannel-iface
+        EnvironmentFile=/etc/network-environment
         ExecStartPre=/usr/bin/mkdir -p /opt/bin
-        ExecStartPre=/usr/bin/wget -N -P /opt/bin https://storage.googleapis.com/k8s/flanneld
+        ExecStartPre=/bin/sh -c "while true; do /usr/bin/ping -c 1 storage.googleapis.com && break ; done ; /usr/bin/wget -N -P /opt/bin https://storage.googleapis.com/k8s/flanneld"
         ExecStartPre=/usr/bin/chmod +x /opt/bin/flanneld
-        ExecStart=/opt/bin/flanneld --iface=eth1
-        #ExecStart=/opt/bin/flanneld --iface=eth1 --etcd-endpoints http://__MASTER_PRIVATE_IP__:4001
+        ExecStart=/bin/sh -c "/opt/bin/flanneld --iface=$(ip route show | grep -v $(ip route show | grep default | awk '{ print $5 }') | awk '{ print $3 }')"
     - name: docker-cache-waiter.service
       command: start
       content: |
