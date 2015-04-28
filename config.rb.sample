@@ -6,7 +6,7 @@ $num_instances=3
 $master_instances=1
 
 # Used to fetch a new discovery token for a cluster of size $num_instances
-#$new_discovery_url="https://discovery.etcd.io/new?size=#{$master_instances}"
+$new_discovery_url="https://discovery.etcd.io/new?size=#{$master_instances}"
 
 #
 # coreos-vagrant is configured through a series of configuration
@@ -18,16 +18,16 @@ $master_instances=1
 # Change basename of the VM
 # The default value is "core", which results in VMs named starting with
 # "core-01" through to "core-${num_instances}".
-#$instance_name_prefix="core"
+$instance_name_prefix="core"
 
 # IP addresses
-#$ipv4_ip_base="172.17.8"
+$ipv4_ip_base="__CHANGE_IP__"
 
 # Set your master IP address
-#$master_ip_address = $ipv4_ip_base + '.' + '11'
+$master_ip_address = $ipv4_ip_base + '.' + '11'
 
 # Set up the Kubernetes Version you want to use
-#$kubernetes_version = '0.13.2'
+$kubernetes_version = '0.13.2'
 
 # Official CoreOS channel from which updates should be downloaded
 #$update_channel='alpha'
@@ -45,8 +45,8 @@ $master_instances=1
 #   export DOCKER_HOST='tcp://127.0.0.1:2375'
 #$expose_docker_tcp=2375
 
-# Enable port forwarding of etcd TCP socket
-#$expose_etcd_tcp=4001
+# Enable port forwarding of etcd TCP socket. This lets you connect easier to etcd.
+$expose_etcd_tcp = 4001
 
 # Enable NFS sharing of your home directory ($HOME) to CoreOS
 # It will be mounted at the same path in the VM as on the host.
