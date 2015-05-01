@@ -43,7 +43,7 @@ $kubernetes_version = '0.13.2'
 # If 2375 is used, Vagrant will auto-increment (e.g. in the case of $num_instances > 1)
 # You can then use the docker tool locally by setting the following env var:
 #   export DOCKER_HOST='tcp://127.0.0.1:2375'
-#$expose_docker_tcp=2375
+$expose_docker_tcp=2375
 
 # Enable port forwarding of etcd TCP socket. This lets you connect easier to etcd.
 $expose_etcd_tcp = 4001
@@ -55,8 +55,8 @@ $expose_etcd_tcp = 4001
 
 # Customize VMs
 #$vm_gui = false
-#$vm_memory = 1024
-#$vm_cpus = 1
+$vm_memory = 1024
+$vm_cpus = 1
 
 # Share additional folders to the CoreOS VMs
 # For example,
