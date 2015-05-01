@@ -130,6 +130,8 @@ coreos:
         Documentation=http://docs.docker.io
 
         [Service]
+        LimitMEMLOCK=infinity 
+        LimitCORE=infinity 
         EnvironmentFile=/run/flannel/subnet.env
         ExecStartPre=/bin/mount --make-rprivate /
         ExecStart=/usr/bin/docker --registry-mirror=http://__MASTER_PRIVATE_IP__:5000 -d --bip=${FLANNEL_SUBNET} --mtu=${FLANNEL_MTU} -s=overlay -H fd://

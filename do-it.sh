@@ -168,12 +168,17 @@ function build_vagrant_boxes(){
     msg "Build new vagrant boxes using ${PROVIDER:-virtualbox}"
     vagrant up --provider ${PROVIDER:-virtualbox} master-01
     vagrant up --provider ${PROVIDER:-virtualbox} 
+}
 
+function ssh_config(){
     # I have a way to manage my ssh config. Create starting with numbers to
     # fix the order the ~/.ssh/config is created
     # alias ssh='[[ -d ~/.ssh/config.d ]] &&  cat ~/.ssh/config.d/*.cfg > ~/.ssh/config ; /usr/bin/ssh'
     if [ -f  ~/.ssh/config.d/01-vagrant.cfg ] ; then
         vagrant ssh-config > ~/.ssh/config.d/01-vagrant.cfg
+        cp ~/.ssh/config.d/01-vagrant.cfg /tmp/01-vagrant.cfg
+    else
+        vagrant ssh-config > /tmp/01-vagrant.cfg
     fi
 }
 
@@ -217,58 +222,49 @@ function checkout_fleet_units(){
     git clone https://github.com/EntropyWorks/fleet-units-galera-cluster.git ${FLEET_UNIT_DIR}
   fi
   msg "Create galera@.service fleet-unit"
-  cat  ${FLEET_UNIT_DIR}/galera@.template | \
-    sed -e s/__FLEETCTL_ETC_ENDPOINT__/${IP}.11:4001/g \
-    -e s/__CHANGE_WSREP_SST_PASSWORD__/${WSREP_SST_PASSWORD}/g \
-    -e s/__CHANGE_MYSQL_ROOT_PASSWORD__/${MYSQL_ROOT_PASSWORD}/g \
-    > ${FLEET_UNIT_DIR}/galera@.service
+  for file in $(ls -1 /tmp/fleet-units-galera-cluster/*\.template |sed -e s/\.template$//g ) ; do
+      cat  ${FLEET_UNIT_DIR}/${file}@.template | \
+        sed -e s/__FLEETCTL_ETC_ENDPOINT__/${IP}.11:4001/g \
+        -e s/__ETC_LISTEN_CLIENT_URLS__/${IP}.11:4001/g \
+        -e s/__CHANGE_WSREP_SST_PASSWORD__/${WSREP_SST_PASSWORD}/g \
+        -e s/__CHANGE_MYSQL_ROOT_PASSWORD__/${MYSQL_ROOT_PASSWORD}/g \
+        > ${FLEET_UNIT_DIR}/${file}@.service
+  done
 }
 
 function check_submit_fleet_units(){
     # Submitting the fleet units to be started later
     msg "Submit fleet units"
-    FLEETCTL_TUNNEL=${TUNNEL_HOST}:${TUNNEL_PORT} fleetctl submit ${FLEET_UNIT_DIR}/*.service
-    FLEETCTL_TUNNEL=${TUNNEL_HOST}:${TUNNEL_PORT} fleetctl list-unit-files
+    fleetctl submit ${FLEET_UNIT_DIR}/*.service
+    fleetctl list-unit-files
 }
 
 function start_mysql(){
     # Start the mysql first
     msg Start the fleet-units
     for i in 1 2 3 ; do
+        msg "fleetctl start galera@${i}.service"
         fleetctl start galera@${i}.service
-        sleep 1
         while true ; do
             echo -n "."
-            fleetctl journal galera@${i}.service 2>/dev/null | grep "mysqld: ready for connections" && break
+            fleetctl journal --lines 1000 galera@${i}.service 2>/dev/null | grep "mysqld: ready for connections" && break
             sleep 1
         done
         # Start the sidekick now that mysql is running.`
+        msg "fleetctl start galera-sidekick@${i}.service"
         fleetctl start galera-sidekick@${i}.service
-        sleep 1
         # Don't start the next mysql process until the sidekick reports in.
-        msg "Wait for sidekick"
         while true ; do
              echo -n "."
              etcdctl ls /galera/galera-${i} 2>/dev/null && break
-             sleep 1
+            sleep 1
         done
         echo ""
-        # Report what has been stored in etcd
+        msg "Verify galera-sidekick@${i}.service made it into etcd"
         echo "galera-sidekick@${i}.service has set /galera/galera-${i} to $(etcdctl get /galera/galera-${i})"
     done 
 }
 
-function check_mysql(){
-    # Check if mysql it ready for connections
-    for i in 1 2 3 ; do
-        while true ; do
-            echo -n "."
-            fleetctl journal galera@${i}.service 2>/dev/null | grep "mysqld: ready for connections" && break
-            sleep 1
-        done
-    done
-    echo " Done!"
-}
 
 function check_sidekick(){
     # Check that the sidekick has recorded the flannel IP to etcd
@@ -279,13 +275,39 @@ function check_sidekick(){
     done
 }
 
+function check_mysql(){
+    # Check if mysql it ready for connections
+    for i in 1 2 3 ; do
+        while true ; do
+            echo -n "."
+            fleetctl journal --lines 1000 galera@${i}.service 2>/dev/null | grep "mysqld: ready for connections" && break
+            sleep 1
+        done
+    done
+    echo " Done!"
+}
+
+function get_results(){
+    # this 
+    for i in $(vagrant status | grep core | grep running | awk '{print $1}') ; do 
+        ssh -F /tmp/01-vagrant.cfg  ${i} -t "docker exec -i -t \$(docker ps | grep galera |awk '{print \$1}') mysql -uroot -proot -e 'show status like \"wsrep_inc%\";'" 
+    done
+}
+
 # The order to run the above functions.
 destroy_vagrant_boxes
 build_vagrant_boxes
+sleep 5
+ssh_config
+sleep 5
 set_fleetctl_env
+sleep 5
 check_fleet_machines
 checkout_fleet_units
 check_submit_fleet_units
+sleep 5
 start_mysql
-#check_mysql
 check_sidekick
+
+#check_mysql
+#get_results

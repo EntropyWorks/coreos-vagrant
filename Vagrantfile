@@ -2,6 +2,7 @@
 # # vi: set ft=ruby :
 
 require 'fileutils'
+require 'vagrant-openstack-provider'
 
 Vagrant.require_version ">= 1.6.0"
 
@@ -93,16 +94,34 @@ end
 Vagrant.configure("2") do |config|
   # always use Vagrants insecure key
   config.ssh.insert_key = false
-
   config.vm.box = "coreos-%s" % $update_channel
   config.vm.box_version = ">= 308.0.1"
   config.vm.box_url = "http://%s.release.core-os.net/amd64-usr/current/coreos_production_vagrant.json" % $update_channel
 
-  ["vmware_fusion", "vmware_workstation"].each do |vmware|
-    config.vm.provider vmware do |v, override|
-      override.vm.box_url = "http://%s.release.core-os.net/amd64-usr/current/coreos_production_vagrant_vmware_fusion.json" % $update_channel
+  ["openstack"].each do |openstack|
+    config.ssh.username = 'core'
+    config.vm.provider openstack do |os, override|
+        os.vm.box = "openstack"
+        os.vm.username = "#{ENV['OS_USERNAME']}"
+        os.vm.api_key  = "#{ENV['OS_PASSWORD']}" 
+        os.vm.flavor   = /standard.large/
+        os.vm.image    = /CoreOS 618.0.0/
+        os.vm.endpoint = "#{ENV['OS_AUTH_URL']}/tokens"  
+        os.vm.keypair_name = "#{ENV['OS_KEYPAIR_NAME']}"
+        os.vm.ssh_username = "core"
+        os.vm.public_network_name = "Ext-Net"
+        os.vm.networks = %w(wtf-01)
+        os.vm.tenant = "#{ENV['OS_TENANT_NAME']}"
+        os.vm.region = "#{ENV['OS_REGION_NAME']}"
     end
   end
+
+  ["vmware_fusion", "vmware_workstation"].each do |vmware|
+    config.vm.provider vmware do |v, override|
+      v.vm.box_url = "http://%s.release.core-os.net/amd64-usr/current/coreos_production_vagrant_vmware_fusion.json" % $update_channel
+    end
+  end
+
 
 #  config.vm.provider :virtualbox do |v|
 #    # On VirtualBox, we don't have guest additions or a functional vboxsf
@@ -134,6 +153,23 @@ Vagrant.configure("2") do |config|
             v.vmx["serial0.tryNoRxLoss"] = "FALSE"
           end
         end
+
+          ["openstack"].each do |openstack|
+            onfig.ssh.username = 'core'
+            config.vm.provider openstack do |os, override|
+                os.vm.username = "#{ENV['OS_USERNAME']}"
+                os.vm.api_key  = "#{ENV['OS_PASSWORD']}" 
+                os.vm.flavor   = /standard.large/
+                os.vm.image    = /CoreOS 618.0.0/
+                os.vm.endpoint = "#{ENV['OS_AUTH_URL']}/tokens"  
+                os.vm.keypair_name = "#{ENV['OS_KEYPAIR_NAME']}"
+                os.vm.ssh_username = "core"
+                os.vm.public_network_name = "Ext-Net"
+                os.vm.networks = %w(wtf-01)
+                os.vm.tenant = "#{ENV['OS_TENANT_NAME']}"
+                os.vm.region = "#{ENV['OS_REGION_NAME']}"
+            end
+          end
 
         config.vm.provider :virtualbox do |vb, override|
           vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
@@ -207,6 +243,24 @@ Vagrant.configure("2") do |config|
           vb.customize ["modifyvm", :id, "--uartmode1", serialFile]
         end
       end
+          ["openstack"].each do |openstack|
+            config.ssh.username = 'core'
+            config.vm.provider openstack do |os, override|
+                os.vm.box = "openstack"
+                os.vm.openstack_auth_url= "#{ENV['OS_AUTH_URL']}/tokens"  
+                os.vm.username = "#{ENV['OS_USERNAME']}"
+                os.vm.password  = "#{ENV['OS_PASSWORD']}" 
+                os.vm.tenant_name = "#{ENV['OS_TENANT_NAME']}"
+                os.vm.flavor   = /standard.large/
+                os.vm.image    = /CoreOS 618.0.0/
+                os.floating_ip_pool  = "Ext-Net"
+                os.vm.keypair_name = "#{ENV['OS_KEYPAIR_NAME']}"
+                os.vm.ssh_username = "core"
+                os.vm.public_network_name = "Ext-Net"
+                os.vm.networks = %w(wtf-01)
+                os.vm.region = "#{ENV['OS_REGION_NAME']}"
+            end
+          end
 
       if $expose_docker_tcp
         config.vm.network "forwarded_port", guest: 2375, host: ($expose_docker_tcp + i - 1), auto_correct: true
