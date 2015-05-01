@@ -223,12 +223,12 @@ function checkout_fleet_units(){
   fi
   msg "Create galera@.service fleet-unit"
   for file in $(ls -1 /tmp/fleet-units-galera-cluster/*\.template |sed -e s/\.template$//g ) ; do
-      cat  ${FLEET_UNIT_DIR}/${file}@.template | \
+      cat  ${FLEET_UNIT_DIR}/${file}.template | \
         sed -e s/__FLEETCTL_ETC_ENDPOINT__/${IP}.11:4001/g \
         -e s/__ETC_LISTEN_CLIENT_URLS__/${IP}.11:4001/g \
         -e s/__CHANGE_WSREP_SST_PASSWORD__/${WSREP_SST_PASSWORD}/g \
         -e s/__CHANGE_MYSQL_ROOT_PASSWORD__/${MYSQL_ROOT_PASSWORD}/g \
-        > ${FLEET_UNIT_DIR}/${file}@.service
+        > ${FLEET_UNIT_DIR}/${file}.service
   done
 }
 
