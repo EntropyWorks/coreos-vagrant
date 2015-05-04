@@ -2,7 +2,6 @@
 # # vi: set ft=ruby :
 
 require 'fileutils'
-require 'vagrant-openstack-provider'
 
 Vagrant.require_version ">= 1.6.0"
 
