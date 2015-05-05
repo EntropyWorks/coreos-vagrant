@@ -5,5 +5,13 @@
 #   asciinema auth
 #   asciinema -h | --help
 #   asciinema --version
-clear
-asciinema rec -t do-it.sh -c "./do-it.sh -p vmware_fusion" -w 1 -y /tmp/do-it.record
+function record(){
+    clear
+    command=$1
+    title=$2
+    filename=${title// /_}.record
+    asciinema rec -t "${title}" -c "${command}" -w 1 -y asciinema/${filename}
+}
+
+record "./do-it.sh -A" "CoreOS Fest MySQL Cluster Demo Full"
+

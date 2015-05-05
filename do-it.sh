@@ -58,13 +58,27 @@ cat << EOF
 
 Very basic commands so far...
 
- -p <provider> Sets your provider (supports vmware and virtualbox)   
- -D Destroys everything when re-run. Without only core-# are removed
+ -P <vagrant provider> | --provider <vagrant provider>  
+
+ -A | --All
+ -D | --destroy-vagrant   
+ -R | --rebuild-minion   
+ -B | --build_vagrant_boxes   
+ -s | --ssh_config   
+ -f | --set_fleetctl_env   
+ -c | --check_fleet_machines   
+ -g | --checkout_fleet_units   
+ -S | --submit_fleet_units   
+ -m | --start_mysql   
+ -k | -check_sidekick   
+ -p | --start_haproxy  
 
 EOF
 cleanup 
 exit
 }
+
+# If I want to hard code these later
 
 while [ -n "$1" ]; do
         # Copy so we can modify it (can't modify $1)
@@ -80,23 +94,68 @@ while [ -n "$1" ]; do
         # Parse current opt
         while [ x"$OPT" != x"-" ] ; do
                 case "$OPT" in
-                        -p* | --provider )
-                                PROVIDER="$2"
-                                shift
-                                ;;
-                        -h* | --help )
+                        -h | --help )
                                 command_readme
                                 shift
                                 ;;
+                        -P | --provider )
+                                PROVIDER="$2"
+                                shift
+                                ;;
+                        -A | --ALL )
+                               DESTROY_VAGRANT_BOXES="true"
+                               BUILD_VAGRANT_BOXES="true"
+                               SSH_CONFIG="true"
+                               SET_FLEETCTL_ENV="true"
+                               CHECK_FLEET_MACHINES="true"
+                               CHECKOUT_FLEET_UNITS="true"
+                               SUBMIT_FLEET_UNITS="true"
+                               START_MYSQL="true"
+                               CHECK_SIDEKICK="true"
+                               START_HAPROXY="true"
+                               ;;
+                        -D | --destroy-vagrant )
+                                DESTROY_VAGRANT_BOXES="true"
+                                ;;
+                        -R | --rebuild-minion )
+                                REBUILD_MINION="true"
+                                ;;
+                        -B | --build_vagrant_boxes )
+                                BUILD_VAGRANT_BOXES="true"
+                                ;;
+                        -s | --ssh_config )
+                                SSH_CONFIG="true"
+                                ;;
+                        -f | --set_fleetctl_env )
+                               SET_FLEETCTL_ENV="true"
+                               ;;
+                        -c | --check_fleet_machines )
+                               CHECK_FLEET_MACHINES="true"
+                               ;;
+                        -g | -checkout_fleet_units )
+                               CHECKOUT_FLEET_UNITS="true"
+                               ;;
+                        -S | --submit_fleet_units )
+                               SUBMIT_FLEET_UNITS="true"
+                               ;;
+                        -m | --start_mysql )
+                               START_MYSQL="true"
+                               ;;
+                        -k | -check_sidekick )
+                               CHECK_SIDEKICK="true"
+                               ;;
+                        -p | --start_haproxy)
+                               START_HAPROXY="true"
+                               ;;
                         # Anything unknown is recorded for later
                         * )
-                                REMAINS="$REMAINS \"$OPT\""
+                               REMAINS="$REMAINS \"$OPT\""
                                 break
                                 ;;
                 esac
                 # Check for multiple short options
                 # NOTICE: be sure to update this pattern to match valid options
-                NEXTOPT="${OPT#-[p]}" # try removing single short opt
+                NEXTOPT="${OPT#-[AphDBsfcgSmkp]}" # try removing single short opt
                 if [ x"$OPT" != x"$NEXTOPT" ] ; then
                         OPT="-$NEXTOPT"  # multiple short opts, keep going
                 else
@@ -114,11 +173,11 @@ eval set -- $REMAINS
 
 function msg(){
     if [ -f `which figlet` ] ; then
-        #figlet -w 150 -c  -f stampatello "\-\-\-\-\-\-\-\-\-\-\-\-\-\-"
+        #figlet -w 100 -c  -f stampatello "\-\-\-\-\-\-\-\-\-\-\-\-\-\-"
         echo 
-        figlet -w 150 -f stampatello $@
+        figlet -w 100 -f stampatello $@
         echo 
-        #figlet -w 150 -c  -f stampatello "\-\-\-\-\-\-\-\-\-\-\-\-\-\-"
+        #figlet -w 100 -c  -f stampatello "\-\-\-\-\-\-\-\-\-\-\-\-\-\-"
     else
         line="------------------------------------------------"
         echo ${line}
@@ -167,6 +226,7 @@ function build_vagrant_boxes(){
     # to use later.
     msg "Build new vagrant boxes using ${PROVIDER:-virtualbox}"
     vagrant up --provider ${PROVIDER:-virtualbox} master-01
+    sleep 5
     vagrant up --provider ${PROVIDER:-virtualbox} 
 }
 
@@ -188,7 +248,9 @@ function set_fleetctl_env(){
 
     vagrant ssh-config master-01 2>&1 >  $tempfile
 
-    msg "Setting tunnel port to ${TUNNEL_PORT}"
+    if [[  ! -n $1 ]] ; then
+        msg "Setting fleetctl tunnel port"
+    fi
 
     export TUNNEL_HOST=$(cat $tempfile |grep "HostName" | awk '{print $2}')
     export TUNNEL_PORT=$(cat $tempfile |grep "Port" | awk '{print $2}')
@@ -197,45 +259,54 @@ function set_fleetctl_env(){
     export FLEETCTL_STRICT_HOST_KEY_CHECKING=false
     export FLEETCTL_KNOWN_HOSTS_FILE=/dev/null
 
-cat << EOF
-
+    if [[  ! -n $1 ]] ; then
+    cat << EOF
     export TUNNEL_HOST=$(cat $tempfile |grep "HostName" | awk '{print $2}')
     export TUNNEL_PORT=$(cat $tempfile |grep "Port" | awk '{print $2}')
     export FLEETCTL_TUNNEL=${TUNNEL_HOST}:${TUNNEL_PORT}
     export FLEETCTL_SSH_USERNAME=core
     export FLEETCTL_STRICT_HOST_KEY_CHECKING=false
     export FLEETCTL_KNOWN_HOSTS_FILE=/dev/null
-
 EOF
+    fi
 }
 
 function check_fleet_machines(){
     # Verify that machines are seen 
     msg "Checking fleet machines"
-    FLEETCTL_TUNNEL=${TUNNEL_HOST}:${TUNNEL_PORT} fleetctl list-machines
+    fleetctl list-machines
 }
 
 
 function checkout_fleet_units(){
   if [ ! -d /tmp/fleet-units-galera-cluster ] ; then
     msg "Checkout fleet units galera cluster"
+    echo "git clone https://github.com/EntropyWorks/fleet-units-galera-cluster.git ${FLEET_UNIT_DIR}"
     git clone https://github.com/EntropyWorks/fleet-units-galera-cluster.git ${FLEET_UNIT_DIR}
   fi
   msg "Create galera@.service fleet-unit"
-  for file in $(ls -1 /tmp/fleet-units-galera-cluster/*\.template |sed -e s/\.template$//g ) ; do
-      cat  ${FLEET_UNIT_DIR}/${file}.template | \
+  for file in $(ls -1 ${FLEET_UNIT_DIR}/*\.template |sed -e s/\.template$//g ) ; do
+      cat  ${file}.template | \
         sed -e s/__FLEETCTL_ETC_ENDPOINT__/${IP}.11:4001/g \
         -e s/__ETC_LISTEN_CLIENT_URLS__/${IP}.11:4001/g \
         -e s/__CHANGE_WSREP_SST_PASSWORD__/${WSREP_SST_PASSWORD}/g \
         -e s/__CHANGE_MYSQL_ROOT_PASSWORD__/${MYSQL_ROOT_PASSWORD}/g \
-        > ${FLEET_UNIT_DIR}/${file}.service
+        > ${file}.service
+        echo "Created ${file}.service from ${file}.template"
   done
 }
 
-function check_submit_fleet_units(){
+function submit_fleet_units(){
     # Submitting the fleet units to be started later
     msg "Submit fleet units"
-    fleetctl submit ${FLEET_UNIT_DIR}/*.service
+    for file in $(ls -1 ${FLEET_UNIT_DIR}/*\.service) ; do
+        echo "fleetctl submit ${file}"
+        fleetctl submit ${file}
+        sleep 5
+    done
+
+    msg "Check fleetctl list-unit-files"
+    echo "fleetctl list-unit-files"
     fleetctl list-unit-files
 }
 
@@ -247,7 +318,7 @@ function start_mysql(){
         fleetctl start galera@${i}.service
         while true ; do
             echo -n "."
-            fleetctl journal --lines 1000 galera@${i}.service 2>/dev/null | grep "mysqld: ready for connections" && break
+            fleetctl journal --lines 50 galera@${i}.service 2>/dev/null | grep "mysqld: ready for connections" && break
             sleep 1
         done
         # Start the sidekick now that mysql is running.`
@@ -275,16 +346,10 @@ function check_sidekick(){
     done
 }
 
-function check_mysql(){
-    # Check if mysql it ready for connections
-    for i in 1 2 3 ; do
-        while true ; do
-            echo -n "."
-            fleetctl journal --lines 1000 galera@${i}.service 2>/dev/null | grep "mysqld: ready for connections" && break
-            sleep 1
-        done
-    done
-    echo " Done!"
+function start_haproxy(){
+    msg "fleetctl start haproxy@1.service"
+    echo "fleetctl start haproxy@1.service"
+    fleetctl start haproxy@1.service
 }
 
 function get_results(){
@@ -294,20 +359,22 @@ function get_results(){
     done
 }
 
-# The order to run the above functions.
-destroy_vagrant_boxes
-build_vagrant_boxes
-sleep 5
-ssh_config
-sleep 5
-set_fleetctl_env
-sleep 5
-check_fleet_machines
-checkout_fleet_units
-check_submit_fleet_units
-sleep 5
-start_mysql
-check_sidekick
+function rebuild_minion(){
+    msg "Destroy CoreOS minion's"
+    for i in $(vagrant status | grep core | awk '{print $1}') ; do 
+        vagrant destroy -f ${i}
+    done
+}
 
-#check_mysql
-#get_results
+# The order to run the above functions.
+if [ ${DESTROY_VAGRANT_BOXES} ] ; then destroy_vagrant_boxes ; sleep 5 ;fi
+if [ ${BUILD_VAGRANT_BOXES} ] ; then build_vagrant_boxes ; sleep 10 ; fi
+if [ ${REBUILD_MINION} ] ; then rebuild_minion ; sleep 10 ; fi
+if [ ${SSH_CONFIG} ] ; then ssh_config ; fi
+if [ ${SET_FLEETCTL_ENV} ] ; then set_fleetctl_env ; fi
+if [ ${CHECK_FLEET_MACHINES} ] ; then check_fleet_machines ; fi
+if [ ${CHECKOUT_FLEET_UNITS} ] ; then checkout_fleet_units ; fi
+if [ ${SUBMIT_FLEET_UNITS} ] ; then submit_fleet_units ; fi
+if [ ${START_MYSQL} ] ; then start_mysql ; fi
+if [ ${CHECK_SIDEKICK} ] ; then  check_sidekick ; fi
+if [ ${START_HAPROXY} ] ; then start_haproxy ; fi
