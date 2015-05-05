@@ -17,6 +17,12 @@ git clone https://github.com/coreos/coreos-vagrant/
 cd coreos-vagrant
 ```
 
+3) TL;DR
+
+```
+./do-it.sh -A
+```
+
 3) Startup and SSH
 
 There are two "providers" for Vagrant with slightly different instructions.
