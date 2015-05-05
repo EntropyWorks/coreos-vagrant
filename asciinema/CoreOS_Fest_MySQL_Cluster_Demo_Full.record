@@ -1,0 +1,2606 @@
+{
+  "version": 1,
+  "width": 100,
+  "height": 27,
+  "duration": 170.100177,
+  "command": "./do-it.sh -A",
+  "title": "CoreOS Fest MySQL Cluster Demo Full",
+  "env": {
+    "TERM": "xterm-256color",
+    "SHELL": "/bin/bash"
+  },
+  "stdout": [
+    [
+      0.015337,
+      "\r\n"
+    ],
+    [
+      0.003038,
+      ".-,--.          .                     .    .                            .    .                   \r\n' |   \\ ,-. ,-. |- ,-. ,-. . .    ,-. |  ,-|   .  , ,-. ,-. ,-. ,-. ,-. |-   |-. ,-. . , ,-. ,-. \r\n, |   / |-' `-. |  |   | | | |    | | |  | |   | /  ,-| | | |   ,-| | | |    | | | |  X  |-' `-. \r\n"
+    ],
+    [
+      0.000009,
+      "`-^--'  `-' `-' `' '   `-' `-|    `-' `' `-^   `'   `-^ `-| '   `-^ ' ' `'   ^-' `-' ' ` `-' `-' \r\n"
+    ],
+    [
+      0.000013,
+      "                            /|                           ,|                                      \r\n"
+    ],
+    [
+      0.000023,
+      "                           `-'                           `'                                      \r\n"
+    ],
+    [
+      0.000203,
+      "\r\n"
+    ],
+    [
+      1.000000,
+      "\u001b[1m==\u003e core-05: VM not created. Moving on...\u001b[0m\r\n"
+    ],
+    [
+      0.145509,
+      "\u001b[1m==\u003e core-04: VM not created. Moving on...\u001b[0m\r\n"
+    ],
+    [
+      0.180698,
+      "\u001b[1m==\u003e core-03: VM not created. Moving on...\u001b[0m\r\n"
+    ],
+    [
+      0.139976,
+      "\u001b[1m==\u003e core-02: VM not created. Moving on...\u001b[0m\r\n"
+    ],
+    [
+      0.174955,
+      "\u001b[1m==\u003e core-01: VM not created. Moving on...\u001b[0m\r\n"
+    ],
+    [
+      0.182772,
+      "\u001b[1m==\u003e master-01: VM not created. Moving on...\u001b[0m\r\n"
+    ],
+    [
+      1.000000,
+      "\r\n"
+    ],
+    [
+      0.004294,
+      ",-,---.       .    .                                            .    .                   \r\n"
+    ],
+    [
+      0.000009,
+      " '|___/ . . . |  ,-|   ,-. ,-. . , ,   .  , ,-. ,-. ,-. ,-. ,-. |-   |-. ,-. . , ,-. ,-. \r\n"
+    ],
+    [
+      0.000024,
+      " ,|   \\ | | | |  | |   | | |-' |/|/    | /  ,-| | | |   ,-| | | |    | | | |  X  |-' `-. \r\n"
+    ],
+    [
+      0.000021,
+      "`-^---' `-^ ' `' `-^   ' ' `-' ' '     `'   `-^ `-| '   `-^ ' ' `'   ^-' `-' ' ` `-' `-' \r\n"
+    ],
+    [
+      0.000029,
+      "                                                 ,|                                      \r\n"
+    ],
+    [
+      0.000015,
+      "                                                 `'                                      \r\n"
+    ],
+    [
+      0.000043,
+      "                                .          .  .           \r\n"
+    ],
+    [
+      0.000057,
+      ". . ,-. . ,-. ,-.    .  , . ,-. |- . . ,-. |  |-. ,-. . , \r\n"
+    ],
+    [
+      0.000007,
+      "| | `-. | | | | |    | /  | |   |  | | ,-| |  | | | |  X  \r\n"
+    ],
+    [
+      0.000014,
+      "`-^ `-' ' ' ' `-|    `'   ' '   `' `-^ `-^ `' ^-' `-' ' ` \r\n"
+    ],
+    [
+      0.000015,
+      "               ,|                                         \r\n"
+    ],
+    [
+      0.000013,
+      "               `'                                         \r\n"
+    ],
+    [
+      0.000242,
+      "\r\n"
+    ],
+    [
+      1.000000,
+      "https://discovery.etcd.io/6a558847153966c928a7ec0042c31065\r\n"
+    ],
+    [
+      0.000013,
+      "192.168.240.11\r\n"
+    ],
+    [
+      0.771258,
+      "\u001b[0mBringing machine 'master-01' up with 'virtualbox' provider...\u001b[0m\r\n"
+    ],
+    [
+      0.218782,
+      "\u001b[1m==\u003e master-01: Importing base box 'coreos-alpha'...\u001b[0m\r\n"
+    ],
+    [
+      0.381696,
+      "\u001b[0m\r\u001b[K\u001b[0m"
+    ],
+    [
+      0.000190,
+      "\u001b[0mProgress: 10%\u001b[0m"
+    ],
+    [
+      0.408545,
+      "\u001b[0m\r\u001b[K\u001b[0m"
+    ],
+    [
+      0.000359,
+      "\u001b[0mProgress: 90%\u001b[0m"
+    ],
+    [
+      1.000000,
+      "\u001b[0m\r\u001b[K\u001b[0m"
+    ],
+    [
+      0.001115,
+      "\u001b[1m==\u003e master-01: Matching MAC address for NAT networking...\u001b[0m\r\n"
+    ],
+    [
+      0.168192,
+      "\u001b[1m==\u003e master-01: Checking if box 'coreos-alpha' is up to date...\u001b[0m\r\n"
+    ],
+    [
+      0.564585,
+      "\u001b[1;33m==\u003e master-01: A newer version of the box 'coreos-alpha' is available! You currently\r\n==\u003e master-01: have version '660.0.0'. The latest is version '668.2.0'. Run\r\n==\u003e master-01: `vagrant box update` to update.\u001b[0m\r\n"
+    ],
+    [
+      0.653106,
+      "\u001b[1m==\u003e master-01: Setting the name of the VM: coreos-vagrant_master-01_1430730040063_20835\u001b[0m\r\n"
+    ],
+    [
+      0.327943,
+      "\u001b[1m==\u003e master-01: Clearing any previously set network interfaces...\u001b[0m\r\n"
+    ],
+    [
+      0.193410,
+      "\u001b[1m==\u003e master-01: Preparing network interfaces based on configuration...\u001b[0m\r\n"
+    ],
+    [
+      0.000322,
+      "\u001b[0m    master-01: Adapter 1: nat\u001b[0m\r\n"
+    ],
+    [
+      0.000341,
+      "\u001b[0m    master-01: Adapter 2: hostonly\u001b[0m\r\n"
+    ],
+    [
+      0.053009,
+      "\u001b[1m==\u003e master-01: Forwarding ports...\u001b[0m\r\n"
+    ],
+    [
+      0.085290,
+      "\u001b[0m    master-01: 2375 =\u003e 2375 (adapter 1)\u001b[0m\r\n"
+    ],
+    [
+      0.000267,
+      "\u001b[0m    master-01: 4001 =\u003e 4001 (adapter 1)\u001b[0m\r\n"
+    ],
+    [
+      0.000347,
+      "\u001b[0m    master-01: 22 =\u003e 2222 (adapter 1)\u001b[0m\r\n"
+    ],
+    [
+      0.158545,
+      "\u001b[1m==\u003e master-01: Running 'pre-boot' VM customizations...\u001b[0m\r\n"
+    ],
+    [
+      0.237362,
+      "\u001b[1m==\u003e master-01: Booting VM...\u001b[0m\r\n"
+    ],
+    [
+      0.275439,
+      "\u001b[1m==\u003e master-01: Waiting for machine to boot. This may take a few minutes...\u001b[0m"
+    ],
+    [
+      0.000260,
+      "\r\n"
+    ],
+    [
+      0.377779,
+      "\u001b[0m    master-01: SSH address: 127.0.0.1:2222\u001b[0m\r\n"
+    ],
+    [
+      0.000228,
+      "\u001b[0m    master-01: SSH username: core\u001b[0m\r\n"
+    ],
+    [
+      0.000217,
+      "\u001b[0m    master-01: SSH auth method: private key\u001b[0m\r\n"
+    ],
+    [
+      1.000000,
+      "\u001b[0m    master-01: Warning: Connection timeout. Retrying...\u001b[0m\r\n"
+    ],
+    [
+      1.000000,
+      "\u001b[1m==\u003e master-01: Machine booted and ready!\u001b[0m\r\n"
+    ],
+    [
+      0.001160,
+      "\u001b[1m==\u003e master-01: Setting hostname...\u001b[0m\r\n"
+    ],
+    [
+      0.404802,
+      "\u001b[1m==\u003e master-01: Configuring and enabling network interfaces...\u001b[0m\r\n"
+    ],
+    [
+      0.189406,
+      "\u001b[1m==\u003e master-01: Running provisioner: file...\u001b[0m\r\n"
+    ],
+    [
+      0.128997,
+      "\u001b[1m==\u003e master-01: Running provisioner: shell...\u001b[0m\r\n"
+    ],
+    [
+      0.256741,
+      "\u001b[0m    master-01: Running: inline script\u001b[0m\r\n"
+    ],
+    [
+      1.000000,
+      "Already have user-data.master.yaml\r\n"
+    ],
+    [
+      1.000000,
+      "\u001b[0mBringing machine 'master-01' up with 'virtualbox' provider...\u001b[0m\r\n"
+    ],
+    [
+      0.098530,
+      "\u001b[0mBringing machine 'core-01' up with 'virtualbox' provider...\u001b[0m\r\n"
+    ],
+    [
+      0.001445,
+      "\u001b[0mBringing machine 'core-02' up with 'virtualbox' provider...\u001b[0m\r\n"
+    ],
+    [
+      0.001258,
+      "\u001b[0mBringing machine 'core-03' up with 'virtualbox' provider...\u001b[0m"
+    ],
+    [
+      0.000009,
+      "\r\n"
+    ],
+    [
+      0.042557,
+      "\u001b[0mBringing machine 'core-04' up with 'virtualbox' provider...\u001b[0m\r\n"
+    ],
+    [
+      0.001436,
+      "\u001b[0mBringing machine 'core-05' up with 'virtualbox' provider...\u001b[0m\r\n"
+    ],
+    [
+      0.536880,
+      "\u001b[1m==\u003e master-01: Checking if box 'coreos-alpha' is up to date...\u001b[0m\r\n"
+    ],
+    [
+      0.534588,
+      "\u001b[1;33m==\u003e master-01: A newer version of the box 'coreos-alpha' is available! You currently\r\n==\u003e master-01: have version '660.0.0'. The latest is version '668.2.0'. Run\r\n==\u003e master-01: `vagrant box update` to update.\u001b[0m\r\n"
+    ],
+    [
+      0.107411,
+      "\u001b[1m==\u003e master-01: VirtualBox VM is already running.\u001b[0m\r\n"
+    ],
+    [
+      0.210786,
+      "\u001b[1m==\u003e core-01: Importing base box 'coreos-alpha'...\u001b[0m\r\n"
+    ],
+    [
+      0.489491,
+      "\u001b[0m\r\u001b[K\u001b[0m"
+    ],
+    [
+      0.000202,
+      "\u001b[0mProgress: 10%\u001b[0m"
+    ],
+    [
+      0.201248,
+      "\u001b[0m\r\u001b[K\u001b[0m"
+    ],
+    [
+      0.000221,
+      "\u001b[0mProgress: 60%\u001b[0m"
+    ],
+    [
+      0.100908,
+      "\u001b[0m\r\u001b[K\u001b[0m"
+    ],
+    [
+      0.000174,
+      "\u001b[0mProgress: 90%\u001b[0m"
+    ],
+    [
+      1.000000,
+      "\u001b[0m\r\u001b[K\u001b[0m"
+    ],
+    [
+      0.000684,
+      "\u001b[1m==\u003e core-01: Matching MAC address for NAT networking...\u001b[0m\r\n"
+    ],
+    [
+      0.168395,
+      "\u001b[1m==\u003e core-01: Checking if box 'coreos-alpha' is up to date...\u001b[0m\r\n"
+    ],
+    [
+      0.155228,
+      "\u001b[1;33m==\u003e core-01: A newer version of the box 'coreos-alpha' is available! You currently\r\n==\u003e core-01: have version '660.0.0'. The latest is version '668.2.0'. Run\r\n==\u003e core-01: `vagrant box update` to update.\u001b[0m\r\n"
+    ],
+    [
+      0.653367,
+      "\u001b[1m==\u003e core-01: Setting the name of the VM: coreos-vagrant_core-01_1430730090210_21440\u001b[0m\r\n"
+    ],
+    [
+      0.459736,
+      "\u001b[1m==\u003e core-01: Fixed port collision for 2375 =\u003e 2375. Now on port 2200.\u001b[0m\r\n"
+    ],
+    [
+      0.001438,
+      "\u001b[1m==\u003e core-01: Fixed port collision for 4001 =\u003e 4001. Now on port 2201.\u001b[0m\r\n"
+    ],
+    [
+      0.001672,
+      "\u001b[1m==\u003e core-01: Fixed port collision for 22 =\u003e 2222. Now on port 2202.\u001b[0m\r\n"
+    ],
+    [
+      0.051848,
+      "\u001b[1m==\u003e core-01: Clearing any previously set network interfaces...\u001b[0m\r\n"
+    ],
+    [
+      0.203290,
+      "\u001b[1m==\u003e core-01: Preparing network interfaces based on configuration...\u001b[0m"
+    ],
+    [
+      0.000008,
+      "\r\n"
+    ],
+    [
+      0.000401,
+      "\u001b[0m    core-01: Adapter 1: nat\u001b[0m\r\n"
+    ],
+    [
+      0.000343,
+      "\u001b[0m    core-01: Adapter 2: hostonly\u001b[0m\r\n"
+    ],
+    [
+      0.054080,
+      "\u001b[1m==\u003e core-01: Forwarding ports...\u001b[0m\r\n"
+    ],
+    [
+      0.098406,
+      "\u001b[0m    core-01: 2375 =\u003e 2200 (adapter 1)\u001b[0m\r\n"
+    ],
+    [
+      0.000339,
+      "\u001b[0m    core-01: 4001 =\u003e 2201 (adapter 1)\u001b[0m\r\n"
+    ],
+    [
+      0.000312,
+      "\u001b[0m    core-01: 22 =\u003e 2202 (adapter 1)\u001b[0m\r\n"
+    ],
+    [
+      0.172207,
+      "\u001b[1m==\u003e core-01: Running 'pre-boot' VM customizations...\u001b[0m\r\n"
+    ],
+    [
+      0.280927,
+      "\u001b[1m==\u003e core-01: Booting VM...\u001b[0m\r\n"
+    ],
+    [
+      0.294697,
+      "\u001b[1m==\u003e core-01: Waiting for machine to boot. This may take a few minutes...\u001b[0m"
+    ],
+    [
+      0.001599,
+      "\r\n"
+    ],
+    [
+      0.410231,
+      "\u001b[0m    core-01: SSH address: 127.0.0.1:2202\u001b[0m\r\n"
+    ],
+    [
+      0.000181,
+      "\u001b[0m    core-01: SSH username: core\u001b[0m\r\n"
+    ],
+    [
+      0.000234,
+      "\u001b[0m    core-01: SSH auth method: private key\u001b[0m\r\n"
+    ],
+    [
+      1.000000,
+      "\u001b[0m    core-01: Warning: Connection timeout. Retrying...\u001b[0m\r\n"
+    ],
+    [
+      1.000000,
+      "\u001b[1m==\u003e core-01: Machine booted and ready!\u001b[0m\r\n"
+    ],
+    [
+      0.001237,
+      "\u001b[1m==\u003e core-01: Setting hostname...\u001b[0m\r\n"
+    ],
+    [
+      0.364656,
+      "\u001b[1m==\u003e core-01: Configuring and enabling network interfaces...\u001b[0m\r\n"
+    ],
+    [
+      0.200033,
+      "\u001b[1m==\u003e core-01: Running provisioner: file...\u001b[0m\r\n"
+    ],
+    [
+      0.097035,
+      "\u001b[1m==\u003e core-01: Running provisioner: shell...\u001b[0m\r\n"
+    ],
+    [
+      0.220246,
+      "\u001b[0m    core-01: Running: inline script\u001b[0m\r\n"
+    ],
+    [
+      0.240927,
+      "\u001b[1m==\u003e core-02: Importing base box 'coreos-alpha'...\u001b[0m\r\n"
+    ],
+    [
+      0.486977,
+      "\u001b[0m\r\u001b[K\u001b[0m"
+    ],
+    [
+      0.000288,
+      "\u001b[0mProgress: 10%\u001b[0m"
+    ],
+    [
+      0.100441,
+      "\u001b[0m\r\u001b[K\u001b[0m"
+    ],
+    [
+      0.000170,
+      "\u001b[0mProgress: 90%\u001b[0m"
+    ],
+    [
+      1.000000,
+      "\u001b[0m\r\u001b[K\u001b[0m"
+    ],
+    [
+      0.000469,
+      "\u001b[1m==\u003e core-02: Matching MAC address for NAT networking...\u001b[0m\r\n"
+    ],
+    [
+      0.177467,
+      "\u001b[1m==\u003e core-02: Checking if box 'coreos-alpha' is up to date...\u001b[0m\r\n"
+    ],
+    [
+      0.420244,
+      "\u001b[1;33m==\u003e core-02: A newer version of the box 'coreos-alpha' is available! You currently\r\n==\u003e core-02: have version '660.0.0'. The latest is version '668.2.0'. Run\r\n==\u003e core-02: `vagrant box update` to update.\u001b[0m\r\n"
+    ],
+    [
+      0.945162,
+      "\u001b[1m==\u003e core-02: Setting the name of the VM: coreos-vagrant_core-02_1430730128612_64688\u001b[0m"
+    ],
+    [
+      0.000012,
+      "\r\n"
+    ],
+    [
+      0.514259,
+      "\u001b[1m==\u003e core-02: Fixed port collision for 22 =\u003e 2222. Now on port 2203.\u001b[0m\r\n"
+    ],
+    [
+      0.056986,
+      "\u001b[1m==\u003e core-02: Clearing any previously set network interfaces...\u001b[0m\r\n"
+    ],
+    [
+      0.288083,
+      "\u001b[1m==\u003e core-02: Preparing network interfaces based on configuration...\u001b[0m\r\n"
+    ],
+    [
+      0.000544,
+      "\u001b[0m    core-02: Adapter 1: nat\u001b[0m"
+    ],
+    [
+      0.000011,
+      "\r\n"
+    ],
+    [
+      0.000657,
+      "\u001b[0m    core-02: Adapter 2: hostonly\u001b[0m\r\n"
+    ],
+    [
+      0.073976,
+      "\u001b[1m==\u003e core-02: Forwarding ports...\u001b[0m\r\n"
+    ],
+    [
+      0.105825,
+      "\u001b[0m    core-02: 2375 =\u003e 2376 (adapter 1)\u001b[0m\r\n"
+    ],
+    [
+      0.000437,
+      "\u001b[0m    core-02: 4001 =\u003e 4002 (adapter 1)\u001b[0m\r\n"
+    ],
+    [
+      0.000334,
+      "\u001b[0m    core-02: 22 =\u003e 2203 (adapter 1)\u001b[0m\r\n"
+    ],
+    [
+      0.179075,
+      "\u001b[1m==\u003e core-02: Running 'pre-boot' VM customizations...\u001b[0m\r\n"
+    ],
+    [
+      0.263390,
+      "\u001b[1m==\u003e core-02: Booting VM...\u001b[0m\r\n"
+    ],
+    [
+      0.348328,
+      "\u001b[1m==\u003e core-02: Waiting for machine to boot. This may take a few minutes...\u001b[0m"
+    ],
+    [
+      0.000010,
+      "\r\n"
+    ],
+    [
+      0.229630,
+      "\u001b[0m    core-02: SSH address: 127.0.0.1:2203\u001b[0m\r\n"
+    ],
+    [
+      0.000295,
+      "\u001b[0m    core-02: SSH username: core\u001b[0m\r\n"
+    ],
+    [
+      0.000273,
+      "\u001b[0m    core-02: SSH auth method: private key\u001b[0m\r\n"
+    ],
+    [
+      1.000000,
+      "\u001b[0m    core-02: Warning: Connection timeout. Retrying...\u001b[0m\r\n"
+    ],
+    [
+      1.000000,
+      "\u001b[1m==\u003e core-02: Machine booted and ready!\u001b[0m\r\n"
+    ],
+    [
+      0.000610,
+      "\u001b[1m==\u003e core-02: Setting hostname...\u001b[0m\r\n"
+    ],
+    [
+      0.325569,
+      "\u001b[1m==\u003e core-02: Configuring and enabling network interfaces...\u001b[0m\r\n"
+    ],
+    [
+      0.185565,
+      "\u001b[1m==\u003e core-02: Running provisioner: file...\u001b[0m\r\n"
+    ],
+    [
+      0.108911,
+      "\u001b[1m==\u003e core-02: Running provisioner: shell...\u001b[0m\r\n"
+    ],
+    [
+      0.211573,
+      "\u001b[0m    core-02: Running: inline script\u001b[0m\r\n"
+    ],
+    [
+      0.257894,
+      "\u001b[1m==\u003e core-03: Importing base box 'coreos-alpha'...\u001b[0m\r\n"
+    ],
+    [
+      0.484825,
+      "\u001b[0m\r\u001b[K\u001b[0m"
+    ],
+    [
+      0.000237,
+      "\u001b[0mProgress: 10%\u001b[0m"
+    ],
+    [
+      0.100409,
+      "\u001b[0m\r\u001b[K\u001b[0m"
+    ],
+    [
+      0.000201,
+      "\u001b[0mProgress: 90%\u001b[0m"
+    ],
+    [
+      1.000000,
+      "\u001b[0m\r\u001b[K\u001b[0m"
+    ],
+    [
+      0.000745,
+      "\u001b[1m==\u003e core-03: Matching MAC address for NAT networking...\u001b[0m\r\n"
+    ],
+    [
+      0.205937,
+      "\u001b[1m==\u003e core-03: Checking if box 'coreos-alpha' is up to date...\u001b[0m\r\n"
+    ],
+    [
+      0.605533,
+      "\u001b[1;33m==\u003e core-03: A newer version of the box 'coreos-alpha' is available! You currently\r\n==\u003e core-03: have version '660.0.0'. The latest is version '668.2.0'. Run\r\n==\u003e core-03: `vagrant box update` to update.\u001b[0m\r\n"
+    ],
+    [
+      0.685500,
+      "\u001b[1m==\u003e core-03: Setting the name of the VM: coreos-vagrant_core-03_1430730169370_85482\u001b[0m\r\n"
+    ],
+    [
+      0.580844,
+      "\u001b[1m==\u003e core-03: Fixed port collision for 22 =\u003e 2222. Now on port 2204.\u001b[0m\r\n"
+    ],
+    [
+      0.055398,
+      "\u001b[1m==\u003e core-03: Clearing any previously set network interfaces...\u001b[0m\r\n"
+    ],
+    [
+      0.218287,
+      "\u001b[1m==\u003e core-03: Preparing network interfaces based on configuration...\u001b[0m\r\n"
+    ],
+    [
+      0.000395,
+      "\u001b[0m    core-03: Adapter 1: nat\u001b[0m"
+    ],
+    [
+      0.000007,
+      "\r\n"
+    ],
+    [
+      0.000638,
+      "\u001b[0m    core-03: Adapter 2: hostonly\u001b[0m"
+    ],
+    [
+      0.000007,
+      "\r\n"
+    ],
+    [
+      0.057486,
+      "\u001b[1m==\u003e core-03: Forwarding ports...\u001b[0m\r\n"
+    ],
+    [
+      0.091143,
+      "\u001b[0m    core-03: 2375 =\u003e 2377 (adapter 1)\u001b[0m\r\n"
+    ],
+    [
+      0.000354,
+      "\u001b[0m    core-03: 4001 =\u003e 4003 (adapter 1)\u001b[0m\r\n"
+    ],
+    [
+      0.000399,
+      "\u001b[0m    core-03: 22 =\u003e 2204 (adapter 1)\u001b[0m\r\n"
+    ],
+    [
+      0.233851,
+      "\u001b[1m==\u003e core-03: Running 'pre-boot' VM customizations...\u001b[0m\r\n"
+    ],
+    [
+      0.243312,
+      "\u001b[1m==\u003e core-03: Booting VM...\u001b[0m"
+    ],
+    [
+      0.000015,
+      "\r\n"
+    ],
+    [
+      0.343039,
+      "\u001b[1m==\u003e core-03: Waiting for machine to boot. This may take a few minutes...\u001b[0m\r\n"
+    ],
+    [
+      0.229714,
+      "\u001b[0m    core-03: SSH address: 127.0.0.1:2204\u001b[0m\r\n"
+    ],
+    [
+      0.000139,
+      "\u001b[0m    core-03: SSH username: core\u001b[0m\r\n"
+    ],
+    [
+      0.000407,
+      "\u001b[0m    core-03: SSH auth method: private key\u001b[0m\r\n"
+    ],
+    [
+      1.000000,
+      "\u001b[0m    core-03: Warning: Connection timeout. Retrying...\u001b[0m\r\n"
+    ],
+    [
+      1.000000,
+      "\u001b[1m==\u003e core-03: Machine booted and ready!\u001b[0m\r\n"
+    ],
+    [
+      0.000581,
+      "\u001b[1m==\u003e core-03: Setting hostname...\u001b[0m\r\n"
+    ],
+    [
+      0.320461,
+      "\u001b[1m==\u003e core-03: Configuring and enabling network interfaces...\u001b[0m\r\n"
+    ],
+    [
+      0.178719,
+      "\u001b[1m==\u003e core-03: Running provisioner: file...\u001b[0m\r\n"
+    ],
+    [
+      0.104913,
+      "\u001b[1m==\u003e core-03: Running provisioner: shell...\u001b[0m\r\n"
+    ],
+    [
+      0.272185,
+      "\u001b[0m    core-03: Running: inline script\u001b[0m\r\n"
+    ],
+    [
+      0.211451,
+      "\u001b[1m==\u003e core-04: Importing base box 'coreos-alpha'...\u001b[0m\r\n"
+    ],
+    [
+      0.530973,
+      "\u001b[0m\r\u001b[K\u001b[0m"
+    ],
+    [
+      0.000231,
+      "\u001b[0mProgress: 10%\u001b[0m"
+    ],
+    [
+      1.000000,
+      "\u001b[0m\r\u001b[K\u001b[0m"
+    ],
+    [
+      0.000253,
+      "\u001b[0mProgress: 50%\u001b[0m"
+    ],
+    [
+      0.100818,
+      "\u001b[0m\r\u001b[K\u001b[0m"
+    ],
+    [
+      0.000250,
+      "\u001b[0mProgress: 90%\u001b[0m"
+    ],
+    [
+      1.000000,
+      "\u001b[0m\r\u001b[K\u001b[0m"
+    ],
+    [
+      0.000501,
+      "\u001b[1m==\u003e core-04: Matching MAC address for NAT networking...\u001b[0m\r\n"
+    ],
+    [
+      0.166522,
+      "\u001b[1m==\u003e core-04: Checking if box 'coreos-alpha' is up to date...\u001b[0m\r\n"
+    ],
+    [
+      0.131869,
+      "\u001b[1;33m==\u003e core-04: A newer version of the box 'coreos-alpha' is available! You currently\r\n==\u003e core-04: have version '660.0.0'. The latest is version '668.2.0'. Run\r\n==\u003e core-04: `vagrant box update` to update.\u001b[0m\r\n"
+    ],
+    [
+      0.680539,
+      "\u001b[1m==\u003e core-04: Setting the name of the VM: coreos-vagrant_core-04_1430730209418_89193\u001b[0m\r\n"
+    ],
+    [
+      0.718024,
+      "\u001b[1m==\u003e core-04: Fixed port collision for 22 =\u003e 2222. Now on port 2205.\u001b[0m\r\n"
+    ],
+    [
+      0.066035,
+      "\u001b[1m==\u003e core-04: Clearing any previously set network interfaces...\u001b[0m\r\n"
+    ],
+    [
+      0.202713,
+      "\u001b[1m==\u003e core-04: Preparing network interfaces based on configuration...\u001b[0m\r\n"
+    ],
+    [
+      0.000473,
+      "\u001b[0m    core-04: Adapter 1: nat\u001b[0m\r\n"
+    ],
+    [
+      0.000357,
+      "\u001b[0m    core-04: Adapter 2: hostonly\u001b[0m\r\n"
+    ],
+    [
+      0.054770,
+      "\u001b[1m==\u003e core-04: Forwarding ports...\u001b[0m\r\n"
+    ],
+    [
+      0.145081,
+      "\u001b[0m    core-04: 2375 =\u003e 2378 (adapter 1)\u001b[0m"
+    ],
+    [
+      0.000010,
+      "\r\n"
+    ],
+    [
+      0.000489,
+      "\u001b[0m    core-04: 4001 =\u003e 4004 (adapter 1)\u001b[0m\r\n"
+    ],
+    [
+      0.000454,
+      "\u001b[0m    core-04: 22 =\u003e 2205 (adapter 1)\u001b[0m\r\n"
+    ],
+    [
+      0.184969,
+      "\u001b[1m==\u003e core-04: Running 'pre-boot' VM customizations...\u001b[0m\r\n"
+    ],
+    [
+      0.221249,
+      "\u001b[1m==\u003e core-04: Booting VM...\u001b[0m\r\n"
+    ],
+    [
+      0.298112,
+      "\u001b[1m==\u003e core-04: Waiting for machine to boot. This may take a few minutes...\u001b[0m"
+    ],
+    [
+      0.000319,
+      "\r\n"
+    ],
+    [
+      0.230151,
+      "\u001b[0m    core-04: SSH address: 127.0.0.1:2205\u001b[0m\r\n"
+    ],
+    [
+      0.000152,
+      "\u001b[0m    core-04: SSH username: core\u001b[0m\r\n"
+    ],
+    [
+      0.000375,
+      "\u001b[0m    core-04: SSH auth method: private key\u001b[0m\r\n"
+    ],
+    [
+      1.000000,
+      "\u001b[0m    core-04: Warning: Connection timeout. Retrying...\u001b[0m\r\n"
+    ],
+    [
+      1.000000,
+      "\u001b[1m==\u003e core-04: Machine booted and ready!\u001b[0m\r\n"
+    ],
+    [
+      0.000769,
+      "\u001b[1m==\u003e core-04: Setting hostname...\u001b[0m\r\n"
+    ],
+    [
+      0.286471,
+      "\u001b[1m==\u003e core-04: Configuring and enabling network interfaces...\u001b[0m\r\n"
+    ],
+    [
+      0.187541,
+      "\u001b[1m==\u003e core-04: Running provisioner: file...\u001b[0m\r\n"
+    ],
+    [
+      0.146751,
+      "\u001b[1m==\u003e core-04: Running provisioner: shell...\u001b[0m\r\n"
+    ],
+    [
+      0.226822,
+      "\u001b[0m    core-04: Running: inline script\u001b[0m\r\n"
+    ],
+    [
+      0.251108,
+      "\u001b[1m==\u003e core-05: Importing base box 'coreos-alpha'...\u001b[0m\r\n"
+    ],
+    [
+      0.489479,
+      "\u001b[0m\r\u001b[K\u001b[0m"
+    ],
+    [
+      0.000173,
+      "\u001b[0mProgress: 10%\u001b[0m"
+    ],
+    [
+      0.202668,
+      "\u001b[0m\r\u001b[K\u001b[0m"
+    ],
+    [
+      0.000224,
+      "\u001b[0mProgress: 40%\u001b[0m"
+    ],
+    [
+      0.100750,
+      "\u001b[0m\r\u001b[K\u001b[0m"
+    ],
+    [
+      0.000209,
+      "\u001b[0mProgress: 90%\u001b[0m"
+    ],
+    [
+      1.000000,
+      "\u001b[0m\r\u001b[K\u001b[0m"
+    ],
+    [
+      0.000502,
+      "\u001b[1m==\u003e core-05: Matching MAC address for NAT networking...\u001b[0m\r\n"
+    ],
+    [
+      0.166603,
+      "\u001b[1m==\u003e core-05: Checking if box 'coreos-alpha' is up to date...\u001b[0m\r\n"
+    ],
+    [
+      0.263562,
+      "\u001b[1;33m==\u003e core-05: A newer version of the box 'coreos-alpha' is available! You currently\r\n==\u003e core-05: have version '660.0.0'. The latest is version '668.2.0'. Run\r\n==\u003e core-05: `vagrant box update` to update.\u001b[0m\r\n"
+    ],
+    [
+      0.639060,
+      "\u001b[1m==\u003e core-05: Setting the name of the VM: coreos-vagrant_core-05_1430730250220_59913\u001b[0m\r\n"
+    ],
+    [
+      0.771467,
+      "\u001b[1m==\u003e core-05: Fixed port collision for 22 =\u003e 2222. Now on port 2206.\u001b[0m\r\n"
+    ],
+    [
+      0.113306,
+      "\u001b[1m==\u003e core-05: Clearing any previously set network interfaces...\u001b[0m\r\n"
+    ],
+    [
+      0.229280,
+      "\u001b[1m==\u003e core-05: Preparing network interfaces based on configuration...\u001b[0m\r\n"
+    ],
+    [
+      0.000461,
+      "\u001b[0m    core-05: Adapter 1: nat\u001b[0m\r\n"
+    ],
+    [
+      0.000946,
+      "\u001b[0m    core-05: Adapter 2: hostonly\u001b[0m\r\n"
+    ],
+    [
+      0.057831,
+      "\u001b[1m==\u003e core-05: Forwarding ports...\u001b[0m\r\n"
+    ],
+    [
+      0.106284,
+      "\u001b[0m    core-05: 2375 =\u003e 2379 (adapter 1)\u001b[0m\r\n"
+    ],
+    [
+      0.000537,
+      "\u001b[0m    core-05: 4001 =\u003e 4005 (adapter 1)\u001b[0m\r\n"
+    ],
+    [
+      0.000483,
+      "\u001b[0m    core-05: 22 =\u003e 2206 (adapter 1)\u001b[0m\r\n"
+    ],
+    [
+      0.188659,
+      "\u001b[1m==\u003e core-05: Running 'pre-boot' VM customizations...\u001b[0m\r\n"
+    ],
+    [
+      0.220084,
+      "\u001b[1m==\u003e core-05: Booting VM...\u001b[0m\r\n"
+    ],
+    [
+      0.367742,
+      "\u001b[1m==\u003e core-05: Waiting for machine to boot. This may take a few minutes...\u001b[0m"
+    ],
+    [
+      0.000402,
+      "\r\n"
+    ],
+    [
+      0.237716,
+      "\u001b[0m    core-05: SSH address: 127.0.0.1:2206\u001b[0m\r\n"
+    ],
+    [
+      0.000330,
+      "\u001b[0m    core-05: SSH username: core\u001b[0m\r\n"
+    ],
+    [
+      0.000337,
+      "\u001b[0m    core-05: SSH auth method: private key\u001b[0m\r\n"
+    ],
+    [
+      1.000000,
+      "\u001b[0m    core-05: Warning: Connection timeout. Retrying...\u001b[0m\r\n"
+    ],
+    [
+      1.000000,
+      "\u001b[1m==\u003e core-05: Machine booted and ready!\u001b[0m\r\n"
+    ],
+    [
+      0.000621,
+      "\u001b[1m==\u003e core-05: Setting hostname...\u001b[0m\r\n"
+    ],
+    [
+      0.275940,
+      "\u001b[1m==\u003e core-05: Configuring and enabling network interfaces...\u001b[0m\r\n"
+    ],
+    [
+      0.187530,
+      "\u001b[1m==\u003e core-05: Running provisioner: file...\u001b[0m\r\n"
+    ],
+    [
+      0.148224,
+      "\u001b[1m==\u003e core-05: Running provisioner: shell...\u001b[0m\r\n"
+    ],
+    [
+      0.217543,
+      "\u001b[0m    core-05: Running: inline script\u001b[0m\r\n"
+    ],
+    [
+      1.000000,
+      "\r\n"
+    ],
+    [
+      0.003160,
+      ".---.     .  .                  .          .      .  .    .                  .                .  \r\n\\___  ,-. |- |- . ,-. ,-.    ,\" |  ,-. ,-. |- ,-. |- |    |- . . ,-. ,-. ,-. |    ,-. ,-. ,-. |- \r\n"
+    ],
+    [
+      0.000010,
+      "    \\ |-' |  |  | | | | |    |- |  |-' |-' |  |   |  |    |  | | | | | | |-' |    | | | | |   |  \r\n"
+    ],
+    [
+      0.000004,
+      "`---' `-' `' `' ' ' ' `-|    |  `' `-' `-' `' `-' `' `'   `' `-^ ' ' ' ' `-' `'   |-' `-' '   `' \r\n"
+    ],
+    [
+      0.000046,
+      "                       ,|    '                                                    |              \r\n"
+    ],
+    [
+      0.000010,
+      "                       `'                                                         '              \r\n"
+    ],
+    [
+      0.000234,
+      "\r\n"
+    ],
+    [
+      0.017117,
+      "    export TUNNEL_HOST=127.0.0.1\r\n    export TUNNEL_PORT=2222\r\n    export FLEETCTL_TUNNEL=127.0.0.1:2222\r\n    export FLEETCTL_SSH_USERNAME=core\r\n    export FLEETCTL_STRICT_HOST_KEY_CHECKING=false\r\n    export FLEETCTL_KNOWN_HOSTS_FILE=/dev/null\r\n"
+    ],
+    [
+      0.002737,
+      "\r\n"
+    ],
+    [
+      0.003522,
+      " ,--. .           .                   .          .                  .                 \r\n| `-' |-. ,-. ,-. | , . ,-. ,-.    ,\" |  ,-. ,-. |-   ,-,-. ,-. ,-. |-. . ,-. ,-. ,-. \r\n"
+    ],
+    [
+      0.000014,
+      "|   . | | |-' |   |\u003c  | | | | |    |- |  |-' |-' |    | | | ,-| |   | | | | | |-' `-. \r\n`--'  ' ' `-' `-' ' ` ' ' ' `-|    |  `' `-' `-' `'   ' ' ' `-^ `-' ' ' ' ' ' `-' `-' \r\n"
+    ],
+    [
+      0.000022,
+      "                             ,|    '                                                  \r\n"
+    ],
+    [
+      0.000006,
+      "                             `'                                                       \r\n"
+    ],
+    [
+      0.000213,
+      "\r\n"
+    ],
+    [
+      1.000000,
+      "MACHINE\t\tIP\t\t"
+    ],
+    [
+      0.000011,
+      "METADATA\r\n02dcfa8f...\t192.168.240.11\tprivate_ip=192.168.240.11,public_ip=192.168.240.11,role=master\r\n1f885095...\t192.168.240.101\tprivate_ip=192.168.240.101,public_ip=192.168.240.101,role=minion\r\n4513a066...\t192.168.240.105\tprivate_ip=192.168.240.105,public_ip=192.168.240.105,role=minion\r\n99f59c9c...\t192.168.240.104\tprivate_ip=192.168.240.104,public_ip=192.168.240.104,role=minion\r\nb42c823c...\t192.168.240.102\t"
+    ],
+    [
+      0.000006,
+      "private_ip=192.168.240.102,public_ip=192.168.240.102,role=minion\r\ncdcdf97f...\t192.168.240.103\tprivate_ip=192.168.240.103,public_ip=192.168.240.103,role=minion\r\n"
+    ],
+    [
+      0.003372,
+      "\r\n"
+    ],
+    [
+      0.003334,
+      " ,--. .           .           .       .          .              .                .              \r\n| `-' |-. ,-. ,-. | , ,-. . . |-   ,\" |  ,-. ,-. |-   . . ,-. . |- ,-.   ,-. ,-. |  ,-. ,-. ,-. \r\n|   . | | |-' |   |\u003c  | | | | |    |- |  |-' |-' |    | | | | | |  `-.   | | ,-| |  |-' |   ,-| \r\n"
+    ],
+    [
+      0.000010,
+      "`--'  ' ' `-' `-' ' ` `-' `-^ `'   |  `' `-' `-' `'   `-^ ' ' ' `' `-'   `-| `-^ `' `-' '   `-^ \r\n"
+    ],
+    [
+      0.000004,
+      "                                   '                                      ,|                    \r\n"
+    ],
+    [
+      0.000037,
+      "                                                                          `'                    \r\n"
+    ],
+    [
+      0.000006,
+      "    .          .          \r\n"
+    ],
+    [
+      0.000004,
+      ",-. |  . . ,-. |- ,-. ,-. \r\n"
+    ],
+    [
+      0.000022,
+      "|   |  | | `-. |  |-' |   \r\n"
+    ],
+    [
+      0.000007,
+      "`-' `' `-^ `-' `' `-' '   \r\n"
+    ],
+    [
+      0.000004,
+      "                          \r\n"
+    ],
+    [
+      0.000026,
+      "                          \r\n"
+    ],
+    [
+      0.000220,
+      "\r\n"
+    ],
+    [
+      0.000076,
+      "git clone https://github.com/EntropyWorks/fleet-units-galera-cluster.git /tmp/fleet-units-galera-cluster\r\n"
+    ],
+    [
+      0.003827,
+      "Cloning into '/tmp/fleet-units-galera-cluster'...\r\n"
+    ],
+    [
+      1.000000,
+      "remote: Counting objects: 64, done.\u001b[K\r\nremote: Compressing objects:   4% (1/21)   \u001b[K\rremote: Compressing objects:   9% (2/21)   \u001b[K\r"
+    ],
+    [
+      0.000273,
+      "remote: Compressing objects:  14% (3/21)   \u001b[K\rremote: Compressing objects:  19% (4/21)   \u001b[K\r"
+    ],
+    [
+      0.000008,
+      "remote: Compressing objects:  23% (5/21)   \u001b[K\rremote: Compressing objects:  28% (6/21)   \u001b[K\rremote: Compressing objects:  33% (7/21)   \u001b[K\rremote: Compressing objects:  38% (8/21)   \u001b[K\r"
+    ],
+    [
+      0.000680,
+      "remote: Compressing objects:  42% (9/21)   \u001b[K\rremote: Compressing objects:  47% (10/21)   \u001b[K\r"
+    ],
+    [
+      0.000006,
+      "remote: Compressing objects:  52% (11/21)   \u001b[K\rremote: Compressing objects:  57% (12/21)   \u001b[K\rremote: Compressing objects:  61% (13/21)   \u001b[K\r"
+    ],
+    [
+      0.000307,
+      "remote: Compressing objects:  66% (14/21)   \u001b[K\rremote: Compressing objects:  71% (15/21)   \u001b[K\r"
+    ],
+    [
+      0.000005,
+      "remote: Compressing objects:  76% (16/21)   \u001b[K\rremote: Compressing objects:  80% (17/21)   \u001b[K\rremote: Compressing objects:  85% (18/21)   \u001b[K\r"
+    ],
+    [
+      0.000547,
+      "remote: Compressing objects:  90% (19/21)   \u001b[K\rremote: Compressing objects:  95% (20/21)   \u001b[K\r"
+    ],
+    [
+      0.001183,
+      "remote: Compressing objects: 100% (21/21)   \u001b[K\rremote: Compressing objects: 100% (21/21), done.\u001b[K\r\n"
+    ],
+    [
+      0.123757,
+      "remote: Total 64 (delta 10), reused 0 (delta 0), pack-reused 43\u001b[K\r\n"
+    ],
+    [
+      0.003855,
+      "Unpacking objects:   1% (1/64)   \r"
+    ],
+    [
+      0.002255,
+      "Unpacking objects:   3% (2/64)   \r"
+    ],
+    [
+      0.000498,
+      "Unpacking objects:   4% (3/64)   \r"
+    ],
+    [
+      0.000668,
+      "Unpacking objects:   6% (4/64)   \r"
+    ],
+    [
+      0.000583,
+      "Unpacking objects:   7% (5/64)   \r"
+    ],
+    [
+      0.000618,
+      "Unpacking objects:   9% (6/64)   \r"
+    ],
+    [
+      0.000516,
+      "Unpacking objects:  10% (7/64)   \r"
+    ],
+    [
+      0.000530,
+      "Unpacking objects:  12% (8/64)   \r"
+    ],
+    [
+      0.000583,
+      "Unpacking objects:  14% (9/64)   \r"
+    ],
+    [
+      0.000580,
+      "Unpacking objects:  15% (10/64)   \r"
+    ],
+    [
+      0.000471,
+      "Unpacking objects:  17% (11/64)   \r"
+    ],
+    [
+      0.000553,
+      "Unpacking objects:  18% (12/64)   \r"
+    ],
+    [
+      0.000680,
+      "Unpacking objects:  20% (13/64)   \r"
+    ],
+    [
+      0.000544,
+      "Unpacking objects:  21% (14/64)   \r"
+    ],
+    [
+      0.000468,
+      "Unpacking objects:  23% (15/64)   \r"
+    ],
+    [
+      0.000671,
+      "Unpacking objects:  25% (16/64)   \r"
+    ],
+    [
+      0.000610,
+      "Unpacking objects:  26% (17/64)   \r"
+    ],
+    [
+      0.000478,
+      "Unpacking objects:  28% (18/64)   \r"
+    ],
+    [
+      0.000639,
+      "Unpacking objects:  29% (19/64)   \r"
+    ],
+    [
+      0.000515,
+      "Unpacking objects:  31% (20/64)   \r"
+    ],
+    [
+      0.000482,
+      "Unpacking objects:  32% (21/64)   \r"
+    ],
+    [
+      0.000631,
+      "Unpacking objects:  34% (22/64)   \r"
+    ],
+    [
+      0.000500,
+      "Unpacking objects:  35% (23/64)   \r"
+    ],
+    [
+      0.000739,
+      "Unpacking objects:  37% (24/64)   \r"
+    ],
+    [
+      0.000476,
+      "Unpacking objects:  39% (25/64)   \r"
+    ],
+    [
+      0.000493,
+      "Unpacking objects:  40% (26/64)   \r"
+    ],
+    [
+      0.000560,
+      "Unpacking objects:  42% (27/64)   \r"
+    ],
+    [
+      0.000674,
+      "Unpacking objects:  43% (28/64)   \r"
+    ],
+    [
+      0.000653,
+      "Unpacking objects:  45% (29/64)   \r"
+    ],
+    [
+      0.000416,
+      "Unpacking objects:  46% (30/64)   \r"
+    ],
+    [
+      0.000582,
+      "Unpacking objects:  48% (31/64)   \r"
+    ],
+    [
+      0.000517,
+      "Unpacking objects:  50% (32/64)   \r"
+    ],
+    [
+      0.000467,
+      "Unpacking objects:  51% (33/64)   \r"
+    ],
+    [
+      0.000623,
+      "Unpacking objects:  53% (34/64)   \r"
+    ],
+    [
+      0.000621,
+      "Unpacking objects:  54% (35/64)   \r"
+    ],
+    [
+      0.000566,
+      "Unpacking objects:  56% (36/64)   \r"
+    ],
+    [
+      0.000468,
+      "Unpacking objects:  57% (37/64)   \r"
+    ],
+    [
+      0.000750,
+      "Unpacking objects:  59% (38/64)   \r"
+    ],
+    [
+      0.000698,
+      "Unpacking objects:  60% (39/64)   \r"
+    ],
+    [
+      0.000598,
+      "Unpacking objects:  62% (40/64)   \r"
+    ],
+    [
+      0.000581,
+      "Unpacking objects:  64% (41/64)   \r"
+    ],
+    [
+      0.000553,
+      "Unpacking objects:  65% (42/64)   \r"
+    ],
+    [
+      0.000629,
+      "Unpacking objects:  67% (43/64)   \r"
+    ],
+    [
+      0.000651,
+      "Unpacking objects:  68% (44/64)   \r"
+    ],
+    [
+      0.000668,
+      "Unpacking objects:  70% (45/64)   \r"
+    ],
+    [
+      0.000495,
+      "Unpacking objects:  71% (46/64)   \r"
+    ],
+    [
+      0.000672,
+      "Unpacking objects:  73% (47/64)   \r"
+    ],
+    [
+      0.000433,
+      "Unpacking objects:  75% (48/64)   \r"
+    ],
+    [
+      0.000538,
+      "Unpacking objects:  76% (49/64)   \r"
+    ],
+    [
+      0.000565,
+      "Unpacking objects:  78% (50/64)   \r"
+    ],
+    [
+      0.000448,
+      "Unpacking objects:  79% (51/64)   \r"
+    ],
+    [
+      0.000418,
+      "Unpacking objects:  81% (52/64)   \r"
+    ],
+    [
+      0.000541,
+      "Unpacking objects:  82% (53/64)   \r"
+    ],
+    [
+      0.000770,
+      "Unpacking objects:  84% (54/64)   \r"
+    ],
+    [
+      0.000580,
+      "Unpacking objects:  85% (55/64)   \r"
+    ],
+    [
+      0.000529,
+      "Unpacking objects:  87% (56/64)   \r"
+    ],
+    [
+      0.000616,
+      "Unpacking objects:  89% (57/64)   \r"
+    ],
+    [
+      0.000609,
+      "Unpacking objects:  90% (58/64)   \r"
+    ],
+    [
+      0.000503,
+      "Unpacking objects:  92% (59/64)   \r"
+    ],
+    [
+      0.000597,
+      "Unpacking objects:  93% (60/64)   \r"
+    ],
+    [
+      0.000712,
+      "Unpacking objects:  95% (61/64)   \r"
+    ],
+    [
+      0.000451,
+      "Unpacking objects:  96% (62/64)   \r"
+    ],
+    [
+      0.000531,
+      "Unpacking objects:  98% (63/64)   \r"
+    ],
+    [
+      0.000540,
+      "Unpacking objects: 100% (64/64)   \rUnpacking objects: 100% (64/64), done.\r\n"
+    ],
+    [
+      0.000681,
+      "Checking connectivity... "
+    ],
+    [
+      0.007317,
+      "done.\r\n"
+    ],
+    [
+      0.013747,
+      "\r\n"
+    ],
+    [
+      0.003292,
+      " ,--.             .                .               ,-.                                \r\n"
+    ],
+    [
+      0.000008,
+      "| `-' ,-. ,-. ,-. |- ,-.   ,-. ,-. |  ,-. ,-. ,-. /,-.\\    ,-. ,-. ,-. .  , . ,-. ,-. \r\n|   . |   |-' ,-| |  |-'   | | ,-| |  |-' |   ,-| |,-||    `-. |-' |   | /  | |   |-' \r\n"
+    ],
+    [
+      0.000017,
+      "`--'  '   `-' `-^ `' `-'   `-| `-^ `' `-' '   `-^ \\`-^/ :; `-' `-' '   `'   ' `-' `-' \r\n"
+    ],
+    [
+      0.000018,
+      "                            ,|                     `-'                                \r\n"
+    ],
+    [
+      0.000014,
+      "                            `'                                                        \r\n"
+    ],
+    [
+      0.000020,
+      "   .          .              .  \r\n"
+    ],
+    [
+      0.000013,
+      ",\" |  ,-. ,-. |-   . . ,-. . |- \r\n"
+    ],
+    [
+      0.000005,
+      "|- |  |-' |-' | -- | | | | | |  \r\n|  `' `-' `-' `'   `-^ ' ' ' `' \r\n"
+    ],
+    [
+      0.000013,
+      "'                               \r\n"
+    ],
+    [
+      0.000003,
+      "                                \r\n"
+    ],
+    [
+      0.000199,
+      "\r\n"
+    ],
+    [
+      0.007110,
+      "Created /tmp/fleet-units-galera-cluster/galera@.service from /tmp/fleet-units-galera-cluster/galera@.template\r\n"
+    ],
+    [
+      0.003265,
+      "Created /tmp/fleet-units-galera-cluster/haproxy@.service from /tmp/fleet-units-galera-cluster/haproxy@.template\r\n"
+    ],
+    [
+      0.005920,
+      "\r\n"
+    ],
+    [
+      0.003785,
+      ".---.     .           .       .          .              .      \r\n"
+    ],
+    [
+      0.000010,
+      "\\___  . . |-. ,-,-. . |-   ,\" |  ,-. ,-. |-   . . ,-. . |- ,-. \r\n    \\ | | | | | | | | |    |- |  |-' |-' |    | | | | | |  `-. \r\n"
+    ],
+    [
+      0.000004,
+      "`---' `-^ ^-' ' ' ' ' `'   |  `' `-' `-' `'   `-^ ' ' ' `' `-' \r\n"
+    ],
+    [
+      0.000033,
+      "                           '                                   \r\n"
+    ],
+    [
+      0.000012,
+      "                                                               \r\n"
+    ],
+    [
+      0.000243,
+      "\r\n"
+    ],
+    [
+      0.003124,
+      "fleetctl submit /tmp/fleet-units-galera-cluster/galera-sidekick@.service\r\n"
+    ],
+    [
+      1.000000,
+      "fleetctl submit /tmp/fleet-units-galera-cluster/galera@.service\r\n"
+    ],
+    [
+      1.000000,
+      "fleetctl submit /tmp/fleet-units-galera-cluster/haproxy@.service\r\n"
+    ],
+    [
+      1.000000,
+      "\r\n"
+    ],
+    [
+      0.003803,
+      " ,--. .           .        .          .      .  .    .        .              .         .          \r\n"
+    ],
+    [
+      0.000029,
+      "| `-' |-. ,-. ,-. | ,   ,\" |  ,-. ,-. |- ,-. |- |    |  . ,-. |-   . . ,-. . |-   ,\" . |  ,-. ,-. \r\n"
+    ],
+    [
+      0.000009,
+      "|   . | | |-' |   |\u003c    |- |  |-' |-' |  |   |  |    |  | `-. | -- | | | | | | -- |- | |  |-' `-. \r\n"
+    ],
+    [
+      0.000040,
+      "`--'  ' ' `-' `-' ' `   |  `' `-' `-' `' `-' `' `'   `' ' `-' `'   `-^ ' ' ' `'   |  ' `' `-' `-' \r\n"
+    ],
+    [
+      0.000032,
+      "                        '                                                         '               \r\n"
+    ],
+    [
+      0.000014,
+      "                                                                                                  \r\n"
+    ],
+    [
+      0.000283,
+      "\r\n"
+    ],
+    [
+      0.000053,
+      "fleetctl list-unit-files\r\n"
+    ],
+    [
+      1.000000,
+      "UNIT\t\t\t\tHASH"
+    ],
+    [
+      0.000010,
+      "\tDSTATE\t\tSTATE\t\tTARGET\r\ngalera-sidekick@.service\taa9d748\tinactive\tinactive\t-\r\ngalera@.service\t\t\t8cf3ba3\tinactive\tinactive\t-\r\nhaproxy@.service\t\tb776123\tinactive\tinactive"
+    ],
+    [
+      0.000003,
+      "\t-\r\n"
+    ],
+    [
+      0.003462,
+      "\r\n"
+    ],
+    [
+      0.003373,
+      ".---. .          .    .  .            .          .              .      \r\n\\___  |- ,-. ,-. |-   |- |-. ,-.   ,\" |  ,-. ,-. |-   . . ,-. . |- ,-. \r\n    \\ |  ,-| |   |    |  | | |-'   |- |  |-' |-' | -- | | | | | |  `-. \r\n"
+    ],
+    [
+      0.000013,
+      "`---' `' `-^ '   `'   `' ' ' `-'   |  `' `-' `-' `'   `-^ ' ' ' `' `-' \r\n                                   '                                   \r\n                                                                       \r\n"
+    ],
+    [
+      0.000253,
+      "\r\n"
+    ],
+    [
+      0.002410,
+      "\r\n"
+    ],
+    [
+      0.003055,
+      "   .          .      .  .        .          .  \r\n,\" |  ,-. ,-. |- ,-. |- |    ,-. |- ,-. ,-. |- \r\n|- |  |-' |-' |  |   |  |    `-. |  ,-| |   |  \r\n|  `' `-' `-' `' `-' `' `'   `-' `' `-^ '   `' \r\n"
+    ],
+    [
+      0.000008,
+      "'                                              \r\n                                               \r\n"
+    ],
+    [
+      0.000037,
+      "        .               ,-.                                   \r\n"
+    ],
+    [
+      0.000007,
+      ",-. ,-. |  ,-. ,-. ,-. /,-.\\  ,    ,-. ,-. ,-. .  , . ,-. ,-. \r\n"
+    ],
+    [
+      0.000049,
+      "| | ,-| |  |-' |   ,-| |,-|| '|    `-. |-' |   | /  | |   |-' \r\n"
+    ],
+    [
+      0.000007,
+      "`-| `-^ `' `-' '   `-^ \\`-^/  ` :; `-' `-' '   `'   ' `-' `-' \r\n"
+    ],
+    [
+      0.000022,
+      " ,|                     `-'                                   \r\n"
+    ],
+    [
+      0.000031,
+      " `'                                                           \r\n"
+    ],
+    [
+      0.000273,
+      "\r\n"
+    ],
+    [
+      1.000000,
+      "Unit galera@1.service launched on 1f885095.../192.168.240.101\r\n"
+    ],
+    [
+      0.000875,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "May 04 09:13:53 core-01 docker[2024]: 2015-05-04 09:13:53 1 [Note] mysqld: ready for connections.\r\r\n"
+    ],
+    [
+      0.003953,
+      "\r\n"
+    ],
+    [
+      0.003486,
+      "   .          .      .  .        .          .  \r\n"
+    ],
+    [
+      0.000012,
+      ",\" |  ,-. ,-. |- ,-. |- |    ,-. |- ,-. ,-. |- \r\n|- |  |-' |-' |  |   |  |    `-. |  ,-| |   |  \r\n"
+    ],
+    [
+      0.000006,
+      "|  `' `-' `-' `' `-' `' `'   `-' `' `-^ '   `' \r\n"
+    ],
+    [
+      0.000024,
+      "'                                              \r\n"
+    ],
+    [
+      0.000025,
+      "                                               \r\n"
+    ],
+    [
+      0.000119,
+      "        .                         .     .         .    ,-.                                   \r\n"
+    ],
+    [
+      0.000021,
+      ",-. ,-. |  ,-. ,-. ,-.    ,-. . ,-| ,-. | , . ,-. | , /,-.\\  ,    ,-. ,-. ,-. .  , . ,-. ,-. \r\n"
+    ],
+    [
+      0.000004,
+      "| | ,-| |  |-' |   ,-| -- `-. | | | |-' |\u003c  | |   |\u003c  |,-|| '|    `-. |-' |   | /  | |   |-' \r\n"
+    ],
+    [
+      0.000021,
+      "`-| `-^ `' `-' '   `-^    `-' ' `-^ `-' ' ` ' `-' ' ` \\`-^/  ` :; `-' `-' '   `'   ' `-' `-' \r\n"
+    ],
+    [
+      0.000029,
+      " ,|                                                    `-'                                   \r\n"
+    ],
+    [
+      0.000007,
+      " `'                                                                                          \r\n"
+    ],
+    [
+      0.000269,
+      "\r\n"
+    ],
+    [
+      1.000000,
+      "Unit galera-sidekick@1.service launched on 1f885095.../192.168.240.101\r\n"
+    ],
+    [
+      0.000923,
+      "."
+    ],
+    [
+      0.157866,
+      "/galera/galera-1\r\n"
+    ],
+    [
+      0.000729,
+      "\r\n"
+    ],
+    [
+      0.002574,
+      "\r\n"
+    ],
+    [
+      0.003637,
+      ",.   ,.                \r\n"
+    ],
+    [
+      0.000011,
+      "`|  / ,-. ,-. . ,\" . . \r\n | /  |-' |   | |- | | \r\n `'   `-' '   ' |  `-| \r\n                '   /| \r\n                   `-' \r\n"
+    ],
+    [
+      0.000111,
+      "        .                         .     .         .    ,-.                                   \r\n"
+    ],
+    [
+      0.000008,
+      ",-. ,-. |  ,-. ,-. ,-.    ,-. . ,-| ,-. | , . ,-. | , /,-.\\  ,    ,-. ,-. ,-. .  , . ,-. ,-. \r\n"
+    ],
+    [
+      0.000024,
+      "| | ,-| |  |-' |   ,-| -- `-. | | | |-' |\u003c  | |   |\u003c  |,-|| '|    `-. |-' |   | /  | |   |-' \r\n"
+    ],
+    [
+      0.000016,
+      "`-| `-^ `' `-' '   `-^    `-' ' `-^ `-' ' ` ' `-' ' ` \\`-^/  ` :; `-' `-' '   `'   ' `-' `-' \r\n"
+    ],
+    [
+      0.000021,
+      " ,|                                                    `-'                                   \r\n"
+    ],
+    [
+      0.000014,
+      " `'                                                                                          \r\n"
+    ],
+    [
+      0.000036,
+      "            .         .          .            .        . \r\n"
+    ],
+    [
+      0.000008,
+      ",-,-. ,-. ,-| ,-.   . |-   . ,-. |- ,-.   ,-. |- ,-. ,-| \r\n"
+    ],
+    [
+      0.000017,
+      "| | | ,-| | | |-'   | |    | | | |  | |   |-' |  |   | | \r\n"
+    ],
+    [
+      0.000020,
+      "' ' ' `-^ `-^ `-'   ' `'   ' ' ' `' `-'   `-' `' `-' `-^ \r\n"
+    ],
+    [
+      0.000005,
+      "                                                         \r\n"
+    ],
+    [
+      0.000011,
+      "                                                         \r\n"
+    ],
+    [
+      0.000275,
+      "\r\n"
+    ],
+    [
+      0.011772,
+      "galera-sidekick@1.service has set /galera/galera-1 to 10.244.16.2\r\n"
+    ],
+    [
+      0.002501,
+      "\r\n"
+    ],
+    [
+      0.003140,
+      "   .          .      .  .        .          .  \r\n,\" |  ,-. ,-. |- ,-. |- |    ,-. |- ,-. ,-. |- \r\n|- |  |-' |-' |  |   |  |    `-. |  ,-| |   |  \r\n|  `' `-' `-' `' `-' `' `'   `-' `' `-^ '   `' \r\n'                                              \r\n                                               \r\n"
+    ],
+    [
+      0.000013,
+      "        .               ,-.                                    \r\n"
+    ],
+    [
+      0.000038,
+      ",-. ,-. |  ,-. ,-. ,-. /,-.\\ ,-,    ,-. ,-. ,-. .  , . ,-. ,-. \r\n"
+    ],
+    [
+      0.000065,
+      "| | ,-| |  |-' |   ,-| |,-||  /     `-. |-' |   | /  | |   |-' \r\n`-| `-^ `' `-' '   `-^ \\`-^/ '-` :; `-' `-' '   `'   ' `-' `-' \r\n"
+    ],
+    [
+      0.000008,
+      " ,|                     `-'                                    \r\n"
+    ],
+    [
+      0.000026,
+      " `'                                                            \r\n"
+    ],
+    [
+      0.000313,
+      "\r\n"
+    ],
+    [
+      1.000000,
+      "Unit galera@2.service launched on 4513a066.../192.168.240.105\r\n"
+    ],
+    [
+      0.000906,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "May 04 09:16:46 core-05 docker[1722]: 2015-05-04 09:16:46 1 [Note] mysqld: ready for connections.\r\r\n"
+    ],
+    [
+      0.006552,
+      "\r\n"
+    ],
+    [
+      0.003834,
+      "   .          .      .  .        .          .  \r\n"
+    ],
+    [
+      0.000010,
+      ",\" |  ,-. ,-. |- ,-. |- |    ,-. |- ,-. ,-. |- \r\n|- |  |-' |-' |  |   |  |    `-. |  ,-| |   |  \r\n|  `' `-' `-' `' `-' `' `'   `-' `' `-^ '   `' \r\n"
+    ],
+    [
+      0.000032,
+      "'                                              \r\n"
+    ],
+    [
+      0.000007,
+      "                                               \r\n"
+    ],
+    [
+      0.000076,
+      "        .                         .     .         .    ,-.                                    \r\n"
+    ],
+    [
+      0.000023,
+      ",-. ,-. |  ,-. ,-. ,-.    ,-. . ,-| ,-. | , . ,-. | , /,-.\\ ,-,    ,-. ,-. ,-. .  , . ,-. ,-. \r\n"
+    ],
+    [
+      0.000004,
+      "| | ,-| |  |-' |   ,-| -- `-. | | | |-' |\u003c  | |   |\u003c  |,-||  /     `-. |-' |   | /  | |   |-' \r\n"
+    ],
+    [
+      0.000022,
+      "`-| `-^ `' `-' '   `-^    `-' ' `-^ `-' ' ` ' `-' ' ` \\`-^/ '-` :; `-' `-' '   `'   ' `-' `-' \r\n"
+    ],
+    [
+      0.000020,
+      " ,|                                                    `-'                                    \r\n"
+    ],
+    [
+      0.000023,
+      " `'                                                                                           \r\n"
+    ],
+    [
+      0.000240,
+      "\r\n"
+    ],
+    [
+      1.000000,
+      "Unit galera-sidekick@2.service launched on 4513a066.../192.168.240.105\r\n"
+    ],
+    [
+      0.000895,
+      "."
+    ],
+    [
+      0.008906,
+      "/galera/galera-2\r\n"
+    ],
+    [
+      0.000744,
+      "\r\n"
+    ],
+    [
+      0.002466,
+      "\r\n"
+    ],
+    [
+      0.003069,
+      ",.   ,.                \r\n`|  / ,-. ,-. . ,\" . . \r\n | /  |-' |   | |- | | \r\n `'   `-' '   ' |  `-| \r\n                '   /| \r\n                   `-' \r\n"
+    ],
+    [
+      0.000080,
+      "        .                         .     .         .    ,-.                                    \r\n"
+    ],
+    [
+      0.000020,
+      ",-. ,-. |  ,-. ,-. ,-.    ,-. . ,-| ,-. | , . ,-. | , /,-.\\ ,-,    ,-. ,-. ,-. .  , . ,-. ,-. \r\n"
+    ],
+    [
+      0.000026,
+      "| | ,-| |  |-' |   ,-| -- `-. | | | |-' |\u003c  | |   |\u003c  |,-||  /     `-. |-' |   | /  | |   |-' \r\n"
+    ],
+    [
+      0.000023,
+      "`-| `-^ `' `-' '   `-^    `-' ' `-^ `-' ' ` ' `-' ' ` \\`-^/ '-` :; `-' `-' '   `'   ' `-' `-' \r\n"
+    ],
+    [
+      0.000020,
+      " ,|                                                    `-'                                    \r\n"
+    ],
+    [
+      0.000015,
+      " `'                                                                                           \r\n"
+    ],
+    [
+      0.000034,
+      "            .         .          .            .        . \r\n"
+    ],
+    [
+      0.000013,
+      ",-,-. ,-. ,-| ,-.   . |-   . ,-. |- ,-.   ,-. |- ,-. ,-| \r\n"
+    ],
+    [
+      0.000015,
+      "| | | ,-| | | |-'   | |    | | | |  | |   |-' |  |   | | \r\n"
+    ],
+    [
+      0.000015,
+      "' ' ' `-^ `-^ `-'   ' `'   ' ' ' `' `-'   `-' `' `-' `-^ \r\n"
+    ],
+    [
+      0.000005,
+      "                                                         \r\n"
+    ],
+    [
+      0.000013,
+      "                                                         \r\n"
+    ],
+    [
+      0.000198,
+      "\r\n"
+    ],
+    [
+      0.008895,
+      "galera-sidekick@2.service has set /galera/galera-2 to 10.244.105.2\r\n"
+    ],
+    [
+      0.002458,
+      "\r\n"
+    ],
+    [
+      0.003180,
+      "   .          .      .  .        .          .  \r\n,\" |  ,-. ,-. |- ,-. |- |    ,-. |- ,-. ,-. |- \r\n|- |  |-' |-' |  |   |  |    `-. |  ,-| |   |  \r\n|  `' `-' `-' `' `-' `' `'   `-' `' `-^ '   `' \r\n'                                              \r\n"
+    ],
+    [
+      0.000009,
+      "                                               \r\n"
+    ],
+    [
+      0.000039,
+      "        .               ,-.                                    \r\n,-. ,-. |  ,-. ,-. ,-. /,-.\\ ,-.    ,-. ,-. ,-. .  , . ,-. ,-. \r\n"
+    ],
+    [
+      0.000010,
+      "| | ,-| |  |-' |   ,-| |,-||  -\u003c    `-. |-' |   | /  | |   |-' \r\n"
+    ],
+    [
+      0.000004,
+      "`-| `-^ `' `-' '   `-^ \\`-^/ `-' :; `-' `-' '   `'   ' `-' `-' \r\n"
+    ],
+    [
+      0.000020,
+      " ,|                     `-'                                    \r\n"
+    ],
+    [
+      0.000004,
+      " `'                                                            \r\n"
+    ],
+    [
+      0.000212,
+      "\r\n"
+    ],
+    [
+      1.000000,
+      "Unit galera@3.service launched on 99f59c9c.../192.168.240.104\r\n"
+    ],
+    [
+      0.000992,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "."
+    ],
+    [
+      1.000000,
+      "May 04 09:20:26 core-04 docker[1775]: 2015-05-04 09:20:26 1 [Note] mysqld: ready for connections.\r\r\n"
+    ],
+    [
+      0.007544,
+      "\r\n"
+    ],
+    [
+      0.003979,
+      "   .          .      .  .        .          .  \r\n"
+    ],
+    [
+      0.000010,
+      ",\" |  ,-. ,-. |- ,-. |- |    ,-. |- ,-. ,-. |- \r\n|- |  |-' |-' |  |   |  |    `-. |  ,-| |   |  \r\n|  `' `-' `-' `' `-' `' `'   `-' `' `-^ '   `' \r\n"
+    ],
+    [
+      0.000025,
+      "'                                              \r\n                                               \r\n"
+    ],
+    [
+      0.000059,
+      "        .                         .     .         .    ,-.                                    \r\n"
+    ],
+    [
+      0.000027,
+      ",-. ,-. |  ,-. ,-. ,-.    ,-. . ,-| ,-. | , . ,-. | , /,-.\\ ,-.    ,-. ,-. ,-. .  , . ,-. ,-. \r\n"
+    ],
+    [
+      0.000045,
+      "| | ,-| |  |-' |   ,-| -- `-. | | | |-' |\u003c  | |   |\u003c  |,-||  -\u003c    `-. |-' |   | /  | |   |-' \r\n"
+    ],
+    [
+      0.000019,
+      "`-| `-^ `' `-' '   `-^    `-' ' `-^ `-' ' ` ' `-' ' ` \\`-^/ `-' :; `-' `-' '   `'   ' `-' `-' \r\n"
+    ],
+    [
+      0.000018,
+      " ,|                                                    `-'                                    \r\n"
+    ],
+    [
+      0.000018,
+      " `'                                                                                           \r\n"
+    ],
+    [
+      0.000566,
+      "\r\n"
+    ],
+    [
+      1.000000,
+      "Unit galera-sidekick@3.service launched on 99f59c9c.../192.168.240.104\r\n"
+    ],
+    [
+      0.000964,
+      "."
+    ],
+    [
+      0.009152,
+      "/galera/galera-3\r\n"
+    ],
+    [
+      0.000662,
+      "\r\n"
+    ],
+    [
+      0.002604,
+      "\r\n"
+    ],
+    [
+      0.003098,
+      ",.   ,.                \r\n`|  / ,-. ,-. . ,\" . . \r\n"
+    ],
+    [
+      0.000010,
+      " | /  |-' |   | |- | | \r\n `'   `-' '   ' |  `-| \r\n                '   /| \r\n                   `-' \r\n"
+    ],
+    [
+      0.000135,
+      "        .                         .     .         .    ,-.                                    \r\n"
+    ],
+    [
+      0.000024,
+      ",-. ,-. |  ,-. ,-. ,-.    ,-. . ,-| ,-. | , . ,-. | , /,-.\\ ,-.    ,-. ,-. ,-. .  , . ,-. ,-. \r\n"
+    ],
+    [
+      0.000035,
+      "| | ,-| |  |-' |   ,-| -- `-. | | | |-' |\u003c  | |   |\u003c  |,-||  -\u003c    `-. |-' |   | /  | |   |-' \r\n"
+    ],
+    [
+      0.000038,
+      "`-| `-^ `' `-' '   `-^    `-' ' `-^ `-' ' ` ' `-' ' ` \\`-^/ `-' :; `-' `-' '   `'   ' `-' `-' \r\n"
+    ],
+    [
+      0.000034,
+      " ,|                                                    `-'                                    \r\n"
+    ],
+    [
+      0.000017,
+      " `'                                                                                           \r\n"
+    ],
+    [
+      0.000063,
+      "            .         .          .            .        . \r\n"
+    ],
+    [
+      0.000022,
+      ",-,-. ,-. ,-| ,-.   . |-   . ,-. |- ,-.   ,-. |- ,-. ,-| \r\n"
+    ],
+    [
+      0.000006,
+      "| | | ,-| | | |-'   | |    | | | |  | |   |-' |  |   | | \r\n"
+    ],
+    [
+      0.000018,
+      "' ' ' `-^ `-^ `-'   ' `'   ' ' ' `' `-'   `-' `' `-' `-^ \r\n"
+    ],
+    [
+      0.000004,
+      "                                                         \r\n"
+    ],
+    [
+      0.000020,
+      "                                                         \r\n"
+    ],
+    [
+      0.000253,
+      "\r\n"
+    ],
+    [
+      0.008703,
+      "galera-sidekick@3.service has set /galera/galera-3 to 10.244.47.2\r\n"
+    ],
+    [
+      0.002562,
+      "\r\n"
+    ],
+    [
+      0.003036,
+      ".---.     .     .         .                         .        . \r\n\\___  . ,-| ,-. | , . ,-. | ,   ,-. ,-. ,-. ,-. ,-. |- ,-. ,-| \r\n    \\ | | | |-' |\u003c  | |   |\u003c    |   |-' | | | | |   |  |-' | | \r\n"
+    ],
+    [
+      0.000010,
+      "`---' ' `-^ `-' ' ` ' `-' ' `   '   `-' |-' `-' '   `' `-' `-^ \r\n                                        |                      \r\n                                        '                      \r\n"
+    ],
+    [
+      0.000224,
+      "\r\n"
+    ],
+    [
+      0.011869,
+      "galera-sidekick@1.service has set /galera/galera-1 to 10.244.16.2\r\n"
+    ],
+    [
+      0.009536,
+      "galera-sidekick@2.service has set /galera/galera-2 to 10.244.105.2\r\n"
+    ],
+    [
+      0.009707,
+      "galera-sidekick@3.service has set /galera/galera-3 to 10.244.47.2\r\n"
+    ],
+    [
+      0.002713,
+      "\r\n"
+    ],
+    [
+      0.003640,
+      "   .          .      .  .        .          .  \r\n"
+    ],
+    [
+      0.000010,
+      ",\" |  ,-. ,-. |- ,-. |- |    ,-. |- ,-. ,-. |- \r\n|- |  |-' |-' |  |   |  |    `-. |  ,-| |   |  \r\n|  `' `-' `-' `' `-' `' `'   `-' `' `-^ '   `' \r\n"
+    ],
+    [
+      0.000004,
+      "'                                              \r\n"
+    ],
+    [
+      0.000022,
+      "                                               \r\n"
+    ],
+    [
+      0.000047,
+      ".                            ,-.                                   \r\n"
+    ],
+    [
+      0.000005,
+      "|-. ,-. ,-. ,-. ,-. . , . . /,-.\\  ,    ,-. ,-. ,-. .  , . ,-. ,-. \r\n"
+    ],
+    [
+      0.000008,
+      "| | ,-| | | |   | |  X  | | |,-|| '|    `-. |-' |   | /  | |   |-' \r\n"
+    ],
+    [
+      0.000016,
+      "' ' `-^ |-' '   `-' ' ` `-| \\`-^/  ` :; `-' `-' '   `'   ' `-' `-' \r\n"
+    ],
+    [
+      0.000023,
+      "        |                /|  `-'                                   \r\n"
+    ],
+    [
+      0.000009,
+      "        '               `-'                                        \r\n"
+    ],
+    [
+      0.000321,
+      "\r\n"
+    ],
+    [
+      0.000073,
+      "fleetctl start haproxy@1.service\r\n"
+    ],
+    [
+      1.000000,
+      "Unit haproxy@1.service launched on 02dcfa8f.../192.168.240.11\r\n"
+    ]
+  ]
+}

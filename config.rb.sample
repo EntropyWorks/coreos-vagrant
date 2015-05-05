@@ -1,5 +1,5 @@
 # Size of the CoreOS cluster created by Vagrant
-$num_instances=3
+$num_instances=4
 
 # Set the size of your master where etcd will be run and other
 # items when deploying with kubernetes
