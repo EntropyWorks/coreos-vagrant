@@ -98,10 +98,13 @@ while [ -n "$1" ]; do
                                 command_readme
                                 shift
                                 ;;
+                        -P | --provider )
+                                PROVIDER="$2"
+                                shift
+                                ;;
                         -A | --ALL )
                                DESTROY_VAGRANT_BOXES="true"
                                BUILD_VAGRANT_BOXES="true"
-                               REBUILD_MINION="true"
                                SSH_CONFIG="true"
                                SET_FLEETCTL_ENV="true"
                                CHECK_FLEET_MACHINES="true"
@@ -111,16 +114,11 @@ while [ -n "$1" ]; do
                                CHECK_SIDEKICK="true"
                                START_HAPROXY="true"
                                ;;
-                        -P | --provider )
-                                PROVIDER="$2"
-                                shift
-                                ;;
                         -D | --destroy-vagrant )
                                 DESTROY_VAGRANT_BOXES="true"
                                 ;;
                         -R | --rebuild-minion )
                                 REBUILD_MINION="true"
-                                DESTROY_VAGRANT_BOXES="false"
                                 ;;
                         -B | --build_vagrant_boxes )
                                 BUILD_VAGRANT_BOXES="true"
@@ -175,11 +173,11 @@ eval set -- $REMAINS
 
 function msg(){
     if [ -f `which figlet` ] ; then
-        #figlet -w 150 -c  -f stampatello "\-\-\-\-\-\-\-\-\-\-\-\-\-\-"
+        #figlet -w 100 -c  -f stampatello "\-\-\-\-\-\-\-\-\-\-\-\-\-\-"
         echo 
-        figlet -w 150 -f stampatello $@
+        figlet -w 100 -f stampatello $@
         echo 
-        #figlet -w 150 -c  -f stampatello "\-\-\-\-\-\-\-\-\-\-\-\-\-\-"
+        #figlet -w 100 -c  -f stampatello "\-\-\-\-\-\-\-\-\-\-\-\-\-\-"
     else
         line="------------------------------------------------"
         echo ${line}

@@ -175,7 +175,9 @@ Vagrant.configure("2") do |config|
           vb.customize ["modifyvm", :id, "--uartmode1", serialFile]
         end
       end
-
+      # So I can connect to the haproxy
+      config.vm.network "forwarded_port", guest: 8000, host: 80, auto_correct: true
+      config.vm.network "forwarded_port", guest: 3306, host: 33006, auto_correct: true
       if $expose_docker_tcp
         config.vm.network "forwarded_port", guest: 2375, host: ($expose_docker_tcp + i - 1), auto_correct: true
       end

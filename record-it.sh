@@ -13,7 +13,5 @@ function record(){
     asciinema rec -t "${title}" -c "${command}" -w 1 -y asciinema/${filename}
 }
 
-record ./step-01.sh "Step 01 - Deploy CoreOS"
-record ./step-02.sh "Step 02 - Deploy Fleet Units"
-record ./step-03.sh "Step 03 - Start Fleet Units"
+record "./do-it.sh -A" "CoreOS Fest MySQL Cluster Demo Full"
 
